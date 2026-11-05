@@ -1,0 +1,593 @@
+{
+  "meta": {
+    "title": "HAPPYROOM — Celebrate Together. Anywhere.",
+    "description": "Create a cozy 3D birthday room in seconds, share one link, and celebrate live with friends anywhere. No app, no sign-up required."
+  },
+  "nav": {
+    "skipToContent": "Skip to content",
+    "howItWorks": "How it works",
+    "themes": "Themes",
+    "demo": "Try it",
+    "privacy": "Privacy",
+    "language": "Language",
+    "home": "HAPPYROOM home"
+  },
+  "common": {
+    "createRoom": "Create a Birthday Room",
+    "joinRoom": "Join a Room",
+    "comingSoon": "Opening soon",
+    "comingSoonHint": "Room creation and joining open in the next release. Everything on this page already works.",
+    "localPreview": "Local preview · nothing is sent anywhere"
+  },
+  "hero": {
+    "eyebrow": "Virtual birthday parties, made cozy",
+    "title": "Celebrate Together. Anywhere.",
+    "subtitle": "Create a beautiful 3D birthday room in under a minute, share one link, and gather as playful avatars to blow out the candles together — from any phone or browser.",
+    "noInstall": "No app to install",
+    "noSignup": "No sign-up for guests",
+    "private": "Private by default"
+  },
+  "steps": {
+    "title": "Three steps to a party",
+    "subtitle": "Built so the birthday person feels celebrated, not the host overwhelmed.",
+    "create": {
+      "title": "Create",
+      "body": "Pick a theme, a cake and a time. Your room is ready in seconds — no account needed."
+    },
+    "invite": {
+      "title": "Invite",
+      "body": "Share a private link or QR code in any chat app. Add an access code for extra privacy."
+    },
+    "celebrate": {
+      "title": "Celebrate",
+      "body": "Friends join as avatars, leave wishes and gifts, and blow out the candles together in sync."
+    }
+  },
+  "themes": {
+    "title": "Pick the mood",
+    "subtitle": "Two handcrafted presets for the birthday room. More celebrations are on the way.",
+    "preview": "Preview in 3D",
+    "selected": "Showing in preview",
+    "cozy_twilight": {
+      "name": "Cozy Twilight",
+      "description": "Lavender dusk, warm fairy lights and a glowing cake. Perfect for evening parties."
+    },
+    "sunny_garden": {
+      "name": "Sunny Garden",
+      "description": "Mint walls, golden sunshine and a picnic feel. Bright and cheerful."
+    }
+  },
+  "demo": {
+    "label": "Interactive 3D preview of a birthday room",
+    "title": "Try the room",
+    "subtitle": "This preview runs entirely in your browser. In a real party, every guest sees the same moment at the same time.",
+    "tapCake": "Blow out the candles",
+    "relight": "Relight the candles",
+    "candlesOut": "Make a wish! 🎉",
+    "emotes": "Emotes",
+    "theme": "Theme",
+    "dragHint": "Drag to look around · tap the cake",
+    "loading": "Setting up the party…",
+    "fallbackTitle": "3D preview unavailable",
+    "fallbackBody": "Your device or settings don’t support 3D here, so we’re showing a lightweight illustration. Parties will offer a 2D mode too.",
+    "reducedMotion": "Reduced motion is on, so the preview stays still.",
+    "stepCake": "Tap the cake to blow out the candles.",
+    "stepEmote": "Send an emote — avatars react.",
+    "stepTheme": "Switch the theme to change the mood.",
+    "goToPreview": "Go to preview"
+  },
+  "share": {
+    "title": "Know someone with a birthday coming up?",
+    "subtitle": "Share HAPPYROOM with the friend who always organizes the party.",
+    "copy": "Copy link",
+    "copied": "Link copied",
+    "native": "Share…",
+    "copyFailed": "Couldn’t copy. Select the link and copy it manually.",
+    "qrAlt": "QR code linking to {url}",
+    "qrCaption": "Scan to open on your phone"
+  },
+  "privacy": {
+    "title": "Private, safe and kind by design",
+    "subtitle": "A birthday is personal. HAPPYROOM is built so it stays that way.",
+    "unlisted": {
+      "title": "Unlisted, invite-only rooms",
+      "body": "Rooms never appear in search or public lists. Entry needs an invitation grant — and optionally an access code."
+    },
+    "noAccount": {
+      "title": "No account required",
+      "body": "Guests join with just a display name. Hosts can create a room without signing up and keep a recovery code."
+    },
+    "hostControls": {
+      "title": "Hosts stay in control",
+      "body": "Lock the room, mute chat, remove a guest, approve wishes and photos before anyone else sees them."
+    },
+    "media": {
+      "title": "Your memories, not our marketing",
+      "body": "Photos are only uploaded with your permission, shown after host approval, and can be deleted any time."
+    },
+    "data": {
+      "title": "Minimal analytics",
+      "body": "We count product events without names or messages. Without your consent, nothing identifies you or your device."
+    },
+    "ages": {
+      "title": "Made for friends and family",
+      "body": "No public chat, no direct messages from strangers, no open-world discovery. Report and block are always one tap away."
+    }
+  },
+  "finalCta": {
+    "title": "Their next birthday could feel like everyone’s there.",
+    "subtitle": "Because now, everyone can be."
+  },
+  "footer": {
+    "tagline": "Celebrate Together. Anywhere.",
+    "analyticsSettings": "Analytics settings",
+    "rights": "© {year} HAPPYROOM"
+  },
+  "consent": {
+    "title": "Help us improve HAPPYROOM?",
+    "body": "Allow a random, device-only ID so we can understand return visits. We never collect names, messages or contacts. Without it, we only count anonymous events.",
+    "accept": "Allow",
+    "decline": "No thanks",
+    "close": "Close"
+  },
+  "errors": {
+    "title": "Something went wrong",
+    "body": "The party hit a small snag. Please try again.",
+    "retry": "Try again",
+    "notFoundTitle": "This page wandered off",
+    "notFoundBody": "The link may be mistyped, or the room may have ended.",
+    "home": "Back to home"
+  },
+  "scene": {
+    "cake": "Birthday cake",
+    "giftTable": "Gift table",
+    "memoryWall": "Memory wall",
+    "photoBooth": "Photo booth"
+  },
+  "avatars": {
+    "sunny": "Sunny",
+    "berry": "Berry",
+    "mint": "Mint",
+    "cocoa": "Cocoa",
+    "sky": "Sky",
+    "plum": "Plum"
+  },
+  "emotes": {
+    "wave": "Wave",
+    "clap": "Clap",
+    "dance": "Dance",
+    "celebrate": "Celebrate",
+    "heart": "Heart",
+    "laugh": "Laugh"
+  },
+  "gifts": {
+    "cake_topper": "Cake topper",
+    "flower_bouquet": "Flower bouquet",
+    "teddy_bear": "Teddy bear",
+    "balloon_bouquet": "Balloon bouquet",
+    "star": "Star",
+    "confetti_box": "Confetti box"
+  },
+  "cakes": {
+    "classic_vanilla": "Classic vanilla",
+    "berry_dream": "Berry dream",
+    "chocolate_gold": "Chocolate gold"
+  },
+  "decorations": {
+    "balloons_pastel": "Pastel balloons",
+    "balloons_gold": "Golden balloons",
+    "fairy_lights": "Fairy lights"
+  },
+  "create": {
+    "title": "Create a birthday room",
+    "subtitle": "It takes less than a minute. No account needed.",
+    "step": "Step {current} of {total}",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Create the room",
+    "submitting": "Creating your room…",
+    "steps": {
+      "event": "Occasion",
+      "names": "Names",
+      "theme": "Theme",
+      "cake": "Cake",
+      "time": "Time",
+      "privacy": "Privacy",
+      "review": "Review"
+    },
+    "event": {
+      "label": "What are we celebrating?",
+      "birthday": "Birthday",
+      "later": "More occasions coming later"
+    },
+    "honoree": {
+      "label": "Who is the birthday person?",
+      "placeholder": "e.g. Mai",
+      "help": "Shown inside the room. Not shown in link previews unless you allow it."
+    },
+    "host": {
+      "label": "Your name (host)",
+      "placeholder": "e.g. Sang"
+    },
+    "theme": {
+      "label": "Choose the room mood"
+    },
+    "cake": {
+      "label": "Pick a cake"
+    },
+    "decoration": {
+      "label": "Decorations"
+    },
+    "time": {
+      "label": "When is the party?",
+      "now": "Start now",
+      "scheduled": "Schedule it",
+      "dateTime": "Date and time",
+      "timeZone": "Time zone"
+    },
+    "privacy": {
+      "label": "Who can come in?",
+      "inviteLink": "Anyone with the invite link",
+      "inviteLinkHelp": "The room is never listed publicly. Only people you send the link to can join.",
+      "accessCode": "Invite link + access code",
+      "accessCodeHelp": "Guests also need a short code you tell them separately.",
+      "codeLabel": "Access code (4–12 letters or digits)",
+      "codePlaceholder": "e.g. CAKE24"
+    },
+    "review": {
+      "title": "Ready to party?",
+      "honoree": "Birthday person",
+      "host": "Host",
+      "theme": "Theme",
+      "cake": "Cake",
+      "time": "Time",
+      "privacy": "Privacy",
+      "now": "Starts now"
+    },
+    "lostSession": "This browser will remember you as the host. If you clear it or switch devices, you'll need the recovery code we show next.",
+    "errors": {
+      "required": "Please fill this in.",
+      "too_long": "That's a bit too long.",
+      "invalid_access_code": "Use 4–12 letters or digits.",
+      "in_past": "Pick a time in the future.",
+      "too_far": "Pick a time within the next year.",
+      "invalid_timezone": "Choose a valid time zone.",
+      "rate_limited": "You've created several rooms recently. Please wait a little and try again.",
+      "network": "We couldn't reach HAPPYROOM. Check your connection and try again.",
+      "generic": "Something went wrong creating the room. Please try again."
+    },
+    "done": {
+      "title": "Your room is ready! 🎉",
+      "subtitle": "Share the invite link with friends and family in any chat app.",
+      "inviteLabel": "Invite link",
+      "roomCode": "Room code: {code}",
+      "recoveryTitle": "Save your host recovery code",
+      "recoveryBody": "This is the only time we show it. Use it to get your host controls back on another device or browser.",
+      "copyCode": "Copy code",
+      "codeCopied": "Copied",
+      "downloadCode": "Download as file",
+      "acknowledge": "I saved my recovery code",
+      "enter": "Enter the party",
+      "fileHeading": "HAPPYROOM host recovery"
+    }
+  },
+  "join": {
+    "title": "Join a room",
+    "subtitle": "Paste the invite link you received, or type the room code.",
+    "label": "Invite link or room code",
+    "placeholder": "https://…/r/abcd2345?i=… or abcd2345",
+    "submit": "Continue",
+    "invalid": "That doesn't look like a HAPPYROOM link or room code.",
+    "help": "Room codes are 8 letters and digits. Private rooms also need the invite link or an access code from the host."
+  },
+  "lobby": {
+    "title": "{name}'s birthday party",
+    "startsAt": "Starts {time}",
+    "invitedBadge": "You're invited",
+    "memberBadge": "Welcome back",
+    "hostBadge": "You're the host",
+    "nameLabel": "Your display name",
+    "namePlaceholder": "How should friends see you?",
+    "avatarLabel": "Pick your avatar",
+    "accessCodeLabel": "Access code",
+    "accessCodeHelp": "The host shared this code with guests.",
+    "enter": "Enter the room",
+    "entering": "Joining…",
+    "privacyNote": "Your name and avatar are only visible to people in this party.",
+    "lockedTitle": "Invite needed",
+    "lockedBody": "This party is private. Open the invite link the host sent you, or ask them for one.",
+    "recoverLink": "Are you the host on a new device?",
+    "recoverLabel": "Host recovery code",
+    "recoverSubmit": "Recover host access",
+    "recovering": "Checking…",
+    "errors": {
+      "room_not_found": "This room doesn't exist or has ended.",
+      "invitation_required": "You need an invite link from the host to join.",
+      "invalid_invitation": "This invite link is no longer valid. Ask the host for a new one.",
+      "access_code_required": "Please enter the access code.",
+      "invalid_access_code": "That access code isn't right.",
+      "room_locked": "The host has locked this room.",
+      "banned": "You can't join this room.",
+      "removed": "The host removed you from this room.",
+      "invalid_recovery_code": "That recovery code doesn't match this room.",
+      "rate_limited": "Too many attempts. Please wait a minute.",
+      "not_configured": "The party server isn't configured yet.",
+      "validation_failed": "Please check your name and try again.",
+      "network": "We couldn't reach HAPPYROOM. Check your connection.",
+      "generic": "Something went wrong. Please try again."
+    }
+  },
+  "party": {
+    "title": "{name}'s birthday",
+    "online": "{count, plural, one {# here} other {# here}}",
+    "host": "Host",
+    "you": "You",
+    "offline": "reconnecting…",
+    "invite": "Invite",
+    "inviteTitle": "Invite friends",
+    "inviteBody": "Each new link is private. Anyone with it can join this party.",
+    "inviteCreating": "Creating a fresh invite link…",
+    "close": "Close",
+    "leave": "Leave",
+    "status": {
+      "connecting": "Connecting…",
+      "connected": "Connected",
+      "reconnecting": "Reconnecting…",
+      "disconnected": "Disconnected",
+      "error": "Connection problem"
+    },
+    "retry": "Try again",
+    "controlsDesktop": "Move with WASD or the arrow keys",
+    "controlsMobile": "Drag the joystick to move",
+    "joystick": "Movement joystick",
+    "actions": {
+      "emotes": "Emotes",
+      "wish": "Wish",
+      "gift": "Gift",
+      "photo": "Photo",
+      "people": "People"
+    },
+    "ceremony": {
+      "start": "Start the candle ceremony",
+      "restart": "Celebrate again",
+      "hostOnly": "Only the host can start the ceremony.",
+      "preparing": "Gather around the cake…",
+      "countdown": "Make a wish…",
+      "blow": "Blow out the candles! 🌬️",
+      "blownBy": "{name} blew out the candles!",
+      "autoBlown": "Whoosh! The candles went out!",
+      "celebrate": "Happy birthday, {name}! 🎉",
+      "complete": "What a moment. Take a photo to remember it!"
+    },
+    "panels": {
+      "people": "People",
+      "wishes": "Wishes",
+      "gifts": "Gifts",
+      "pending": "To approve"
+    },
+    "wish": {
+      "placeholder": "Write a birthday wish…",
+      "send": "Send wish",
+      "sent": "Thanks! Your wish will appear after the host approves it.",
+      "sentApproved": "Your wish is on the memory wall.",
+      "empty": "No wishes yet. Be the first!",
+      "approve": "Approve",
+      "reject": "Hide",
+      "pendingEmpty": "Nothing waiting for approval."
+    },
+    "gift": {
+      "choose": "Choose a gift",
+      "message": "Add a message (optional)",
+      "send": "Send gift",
+      "sent": "Gift sent! 🎁",
+      "empty": "No gifts yet.",
+      "open": "Open",
+      "opened": "Opened",
+      "from": "from {name}",
+      "disabled": "The host has paused gifts.",
+      "remove": "Remove"
+    },
+    "moderation": {
+      "mute": "Mute",
+      "unmute": "Unmute",
+      "remove": "Remove",
+      "ban": "Ban",
+      "lock": "Lock room",
+      "unlock": "Unlock room",
+      "giftsOn": "Allow gifts",
+      "giftsOff": "Pause gifts",
+      "confirmBan": "Remove {name} and block them from rejoining?"
+    },
+    "snapshot": {
+      "take": "Take a photo",
+      "taken": "{name} took a party photo 📸",
+      "notice": "Taking a photo captures the 3D room and everyone's avatars and names.",
+      "share": "Share",
+      "download": "Download",
+      "title": "Party photo"
+    },
+    "errors": {
+      "forbidden": "Only the host can do that.",
+      "rate_limited": "Slow down a little 🙂",
+      "muted": "The host has muted you.",
+      "gifts_disabled": "Gifts are paused right now.",
+      "duplicate": "That was already sent.",
+      "invalid_transition": "That can't be done right now.",
+      "invalid_payload": "Please check your input.",
+      "kicked": "You were removed from this party.",
+      "replaced": "You opened this party in another tab.",
+      "idle": "You were disconnected for being idle.",
+      "connect_failed": "Couldn't connect to the party server.",
+      "grant_failed": "Couldn't get access to this party."
+    }
+  },
+  "auth": {
+    "title": "Welcome to HAPPYROOM World",
+    "subtitle": "Your World. Your People. Your Celebrations.",
+    "guest": "Play as guest",
+    "guestHint": "No account needed. Your character is saved in this browser.",
+    "or": "or",
+    "username": "Username",
+    "password": "Password",
+    "passwordHint": "At least 10 characters.",
+    "signIn": "Sign in",
+    "createAccount": "Create account",
+    "toRegister": "New here? Create an account",
+    "toLogin": "Have an account? Sign in",
+    "google": "Continue with Google",
+    "signOut": "Sign out",
+    "working": "Please wait…",
+    "errors": {
+      "invalid_credentials": "Wrong username or password.",
+      "username_taken": "That username is taken.",
+      "invalid_username": "Use 3–24 lowercase letters, digits or _.",
+      "password_too_short": "Use at least 10 characters.",
+      "rate_limited": "Too many attempts. Please wait a few minutes.",
+      "provider_error": "Google sign-in failed.",
+      "not_configured": "This sign-in method is not configured.",
+      "network": "Can't reach HAPPYROOM. Check your connection.",
+      "validation_failed": "Please check the form.",
+      "generic": "Something went wrong. Please try again."
+    }
+  },
+  "character": {
+    "title": "Create your character",
+    "subtitle": "Pick how everyone in the world will see you.",
+    "name": "Display name",
+    "nameHelp": "2–24 characters. Must be unique.",
+    "avatar": "Avatar",
+    "age": "Your age group",
+    "ageHelp": "We use this to keep younger players safe. Players under 13 can't use public chat.",
+    "ages": {
+      "under13": "Under 13",
+      "teen": "13–17",
+      "adult": "18+"
+    },
+    "chat": "Allow public chat",
+    "listed": "Show me in the player list",
+    "save": "Enter the world",
+    "saving": "Saving…",
+    "errors": {
+      "name_taken": "That name is taken. Try another.",
+      "invalid_display_name": "Use 2–24 characters.",
+      "generic": "Couldn't save. Please try again."
+    }
+  },
+  "world": {
+    "loading": "Loading the world…",
+    "loadingZone": "Entering {zone}…",
+    "travelling": "Travelling…",
+    "online": "{count, plural, one {# online} other {# online}}",
+    "here": "In this place",
+    "status": {
+      "idle": "Offline",
+      "connecting": "Connecting…",
+      "connected": "Connected",
+      "reconnecting": "Reconnecting…",
+      "disconnected": "Disconnected",
+      "error": "Connection problem"
+    },
+    "retry": "Try again",
+    "interactKey": "E",
+    "minimap": "Map of {zone}",
+    "you": "You",
+    "places": "Places",
+    "travel": "Go",
+    "current": "You are here",
+    "emotes": "Emotes",
+    "settings": "Settings",
+    "close": "Close",
+    "signOut": "Sign out",
+    "quality": "Graphics quality",
+    "qualityAuto": "Auto",
+    "qualityHigh": "High",
+    "qualityLow": "Battery saver",
+    "showStats": "Show performance stats",
+    "moveButtons": "Show movement buttons",
+    "sprintToggle": "Always run",
+    "controlsDesktop": "WASD / arrows to move · Shift to run · drag to look · E to interact",
+    "controlsMobile": "Joystick to move (push to the edge to run) · E button to interact",
+    "move": {
+      "up": "Move forward",
+      "down": "Move back",
+      "left": "Move left",
+      "right": "Move right"
+    },
+    "joystick": "Movement joystick",
+    "stats": "{fps} FPS · {calls} draw calls · {memory}",
+    "chat": {
+      "title": "Chat",
+      "placeholder": "Say something nice…",
+      "send": "Send",
+      "hide": "Hide chat",
+      "show": "Chat",
+      "kidsOff": "Public chat is off for players under 13.",
+      "off": "Chat is turned off in your settings.",
+      "block": "Block",
+      "report": "Report",
+      "blocked": "{name} is blocked.",
+      "reported": "Thanks — our team will review it.",
+      "empty": "No messages yet. Say hi! 👋",
+      "reportTitle": "Report {name}",
+      "reportReason": "Reason",
+      "reportSend": "Send report"
+    },
+    "reasons": {
+      "harassment": "Harassment",
+      "hate": "Hate",
+      "sexual": "Sexual content",
+      "spam": "Spam",
+      "self_harm": "Self-harm",
+      "violence": "Violence",
+      "other": "Other"
+    },
+    "portal": {
+      "birthday_house": "Enter the Birthday House",
+      "garden_terrace": "Go to the Garden Terrace",
+      "central_plaza": "Back to the Central Plaza"
+    },
+    "interact": {
+      "fountain": "Look at the fountain",
+      "read_sign": "Read the sign",
+      "gazebo": "Rest in the gazebo"
+    },
+    "message": {
+      "fountain": "The fountain sparkles. Make a wish! ✨",
+      "sign_birthday_house": "Birthday House — host or join a private birthday party.",
+      "sign_garden": "Garden Terrace → A quiet garden to hang out.",
+      "gazebo": "A cozy spot to chat with friends."
+    },
+    "expansion": {
+      "market": "Coming soon: Market",
+      "stage": "Coming soon: Stage"
+    },
+    "house": {
+      "title": "Birthday House 🎂",
+      "body": "Birthday parties are private. Create your own, or join one with an invite link or room code.",
+      "create": "Create Birthday Party",
+      "join": "Join Existing Party",
+      "back": "Return to Plaza"
+    },
+    "backToPlaza": "Back to Plaza",
+    "errors": {
+      "too_far": "Walk a little closer first.",
+      "rate_limited": "Slow down a little 🙂",
+      "chat_disabled": "Chat is off for your account.",
+      "chat_filtered": "That message wasn't sent. Please keep it kind.",
+      "invalid_payload": "That didn't work.",
+      "connect_failed": "Couldn't connect to the world server.",
+      "zone_not_found": "That place isn't open.",
+      "forbidden": "You can't go there.",
+      "profile_incomplete": "Finish your character first.",
+      "unauthenticated": "Please sign in again.",
+      "network": "Can't reach HAPPYROOM.",
+      "enter_failed": "Couldn't enter that place.",
+      "replaced": "You opened the world in another tab.",
+      "banned": "This account can't enter the world.",
+      "not_configured": "The world server isn't configured."
+    }
+  },
+  "nav2": {
+    "world": "World"
+  }
+}

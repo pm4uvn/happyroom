@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    services:
+      postgres:
+        image: postgres:17.6-alpine
+        env:
+          POSTGRES_USER: happyroom
+          POSTGRES_PASSWORD: happyroom
+          POSTGRES_DB: happyroom
+        ports: ["54329:5432"]
+        options: >-
+          --health-cmd "pg_isready -U happyroom -d happyroom"
+          --health-interval 5s --health-timeout 3s --health-retries 20
+    env:
+      DATABASE_URL: postgres://happyroom:happyroom@localhost:54329/happyroom
+      NEXT_PUBLIC_APP_URL: http://localhost:3100
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm format:check
+      - run: pnpm build
+      - run: pnpm lint
+      - run: pnpm typecheck
+      - run: pnpm test
+      - name: Database migrations + integration tests
+        run: |
+          pnpm db:reset
+          pnpm test:integration
+      - name: Playwright browsers
+        run: pnpm --filter @happyroom/web exec playwright install --with-deps chromium
+      - name: E2E
+        run: pnpm test:e2e
+        env:
+          E2E_PORT: "3100"
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-report
+          path: apps/web/playwright-report
+          retention-days: 7

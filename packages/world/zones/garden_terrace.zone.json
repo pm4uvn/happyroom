@@ -1,0 +1,132 @@
+{
+  "zoneId": "garden_terrace",
+  "worldId": "happyroom",
+  "displayName": { "en": "Garden Terrace", "vi": "Sân vườn", "ja": "ガーデンテラス" },
+  "version": "1.0.0",
+  "bounds": { "minX": -12, "maxX": 12, "minZ": -12, "maxZ": 12 },
+  "environmentPreset": "garden_golden_hour",
+  "maxPlayers": 20,
+  "publishedStatus": "published",
+  "permissions": { "public": true, "chat": "everyone", "minAgeBand": "under13" },
+  "assets": {},
+  "spawnPoints": [{ "id": "from_plaza", "x": -9.2, "z": 0, "rotY": 1.5708, "default": true }],
+  "portals": [
+    {
+      "id": "plaza_gate",
+      "position": [-11, 0],
+      "radius": 1.5,
+      "promptKey": "world.portal.central_plaza",
+      "target": { "kind": "zone", "zoneId": "central_plaza", "spawnId": "spawn_east_gate" },
+      "returnSpawnId": "from_plaza"
+    }
+  ],
+  "terrain": [
+    {
+      "id": "lawn",
+      "material": "grass",
+      "shape": { "kind": "rect", "rect": { "minX": -12, "maxX": 12, "minZ": -12, "maxZ": 12 } }
+    },
+    { "id": "deck", "material": "wood_deck", "shape": { "kind": "circle", "center": [0, 0], "radius": 4.5 } },
+    {
+      "id": "garden_path",
+      "material": "path",
+      "shape": { "kind": "rect", "rect": { "minX": -12, "maxX": -4, "minZ": -1.3, "maxZ": 1.3 } }
+    },
+    {
+      "id": "pond",
+      "material": "water",
+      "shape": { "kind": "circle", "center": [6.5, -6.5], "radius": 2.2 },
+      "walkable": false
+    }
+  ],
+  "objects": [
+    {
+      "id": "gazebo_main",
+      "type": "gazebo",
+      "position": [0, 0, 0],
+      "collider": { "kind": "circle", "radius": 0.5 },
+      "occludesCamera": false,
+      "interaction": {
+        "radius": 3,
+        "promptKey": "world.interact.gazebo",
+        "action": { "type": "message", "messageKey": "world.message.gazebo" }
+      }
+    },
+    {
+      "id": "plaza_arch",
+      "type": "arch",
+      "position": [-11.6, 0, 0],
+      "rotationY": 90,
+      "props": { "color": "#9178E8" }
+    },
+    {
+      "id": "hedge_n",
+      "type": "hedge",
+      "position": [0, 0, -11.4],
+      "collider": { "kind": "box", "width": 20, "depth": 0.8 },
+      "occludesCamera": true
+    },
+    {
+      "id": "hedge_s",
+      "type": "hedge",
+      "position": [0, 0, 11.4],
+      "collider": { "kind": "box", "width": 20, "depth": 0.8 },
+      "occludesCamera": true
+    },
+    {
+      "id": "flowerbed_1",
+      "type": "flowerbed",
+      "position": [-4, 0, -6],
+      "collider": { "kind": "box", "width": 2.6, "depth": 1.2 },
+      "props": { "colors": ["#F9A6BA", "#FFFFFF"] }
+    },
+    {
+      "id": "flowerbed_2",
+      "type": "flowerbed",
+      "position": [-4, 0, 6],
+      "collider": { "kind": "box", "width": 2.6, "depth": 1.2 },
+      "props": { "colors": ["#F5C870", "#9178E8"] }
+    },
+    {
+      "id": "flowerbed_3",
+      "type": "flowerbed",
+      "position": [6, 0, 5],
+      "collider": { "kind": "box", "width": 2.6, "depth": 1.2 },
+      "props": { "colors": ["#6BCBBE", "#F9A6BA"] }
+    },
+    {
+      "id": "bench_east",
+      "type": "bench",
+      "position": [9.5, 0, 2],
+      "rotationY": 90,
+      "collider": { "kind": "box", "width": 1.8, "depth": 0.6 }
+    },
+    {
+      "id": "pine_1",
+      "type": "pine",
+      "position": [9, 0, -10],
+      "collider": { "kind": "circle", "radius": 0.5 },
+      "occludesCamera": true
+    },
+    {
+      "id": "pine_2",
+      "type": "pine",
+      "position": [9.5, 0, 9.5],
+      "collider": { "kind": "circle", "radius": 0.5 },
+      "occludesCamera": true
+    },
+    {
+      "id": "rock_1",
+      "type": "rock",
+      "position": [3.8, 0, -8.8],
+      "collider": { "kind": "circle", "radius": 0.6 }
+    },
+    {
+      "id": "lamp_1",
+      "type": "street_lamp",
+      "position": [-6, 0, 2],
+      "collider": { "kind": "circle", "radius": 0.18 }
+    }
+  ],
+  "expansionAreas": []
+}

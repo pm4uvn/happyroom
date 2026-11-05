@@ -1,0 +1,593 @@
+{
+  "meta": {
+    "title": "HAPPYROOM — どこにいても、一緒にお祝い。",
+    "description": "かわいい3Dのお誕生日ルームを数秒で作成。リンクをひとつ共有するだけで、世界中の友だちとライブでお祝いできます。アプリも登録も不要です。"
+  },
+  "nav": {
+    "skipToContent": "本文へスキップ",
+    "howItWorks": "使い方",
+    "themes": "テーマ",
+    "demo": "試してみる",
+    "privacy": "プライバシー",
+    "language": "言語",
+    "home": "HAPPYROOM ホーム"
+  },
+  "common": {
+    "createRoom": "お誕生日ルームを作る",
+    "joinRoom": "ルームに参加",
+    "comingSoon": "まもなく公開",
+    "comingSoonHint": "ルームの作成と参加は次のリリースで公開されます。このページの機能はすべて動作しています。",
+    "localPreview": "ローカルプレビュー・データは送信されません"
+  },
+  "hero": {
+    "eyebrow": "ぬくもりのあるオンライン誕生日パーティー",
+    "title": "どこにいても、一緒にお祝い。",
+    "subtitle": "1分以内に素敵な3Dお誕生日ルームを作成し、リンクをひとつ共有。かわいいアバターになって、スマホやブラウザからみんなで一緒にろうそくを吹き消しましょう。",
+    "noInstall": "アプリのインストール不要",
+    "noSignup": "ゲストは登録不要",
+    "private": "初期設定で非公開"
+  },
+  "steps": {
+    "title": "パーティーまで3ステップ",
+    "subtitle": "主役がしっかり祝われ、主催者は気軽に準備できるように。",
+    "create": {
+      "title": "作る",
+      "body": "テーマ、ケーキ、日時を選ぶだけ。アカウントなしで数秒でルームが完成します。"
+    },
+    "invite": {
+      "title": "招待する",
+      "body": "非公開リンクやQRコードを好きなチャットアプリで共有。アクセスコードでさらに安心。"
+    },
+    "celebrate": {
+      "title": "お祝いする",
+      "body": "友だちがアバターで参加して、メッセージやギフトを贈り、みんな同時にろうそくを吹き消します。"
+    }
+  },
+  "themes": {
+    "title": "雰囲気を選ぼう",
+    "subtitle": "丁寧に作られたお誕生日ルームのプリセットが2種類。ほかのお祝いも準備中です。",
+    "preview": "3Dでプレビュー",
+    "selected": "プレビュー表示中",
+    "cozy_twilight": {
+      "name": "トワイライト",
+      "description": "ラベンダー色の夕暮れ、あたたかなライト、きらめくケーキ。夜のパーティーにぴったり。"
+    },
+    "sunny_garden": {
+      "name": "サニーガーデン",
+      "description": "ミントの壁、金色の日差し、ピクニック気分。明るく楽しい雰囲気。"
+    }
+  },
+  "demo": {
+    "label": "お誕生日ルームのインタラクティブ3Dプレビュー",
+    "title": "ルームを体験",
+    "subtitle": "このプレビューはすべてブラウザ内で動作します。本番のパーティーでは、全員が同じ瞬間を同時に体験します。",
+    "tapCake": "ろうそくを吹き消す",
+    "relight": "ろうそくに火をつける",
+    "candlesOut": "願いごとをどうぞ！🎉",
+    "emotes": "エモート",
+    "theme": "テーマ",
+    "dragHint": "ドラッグで見回す・ケーキをタップ",
+    "loading": "パーティーを準備中…",
+    "fallbackTitle": "3Dプレビューを表示できません",
+    "fallbackBody": "お使いの端末または設定では3Dを表示できないため、軽量なイラストを表示しています。パーティーでも2Dモードを用意する予定です。",
+    "reducedMotion": "「視差効果を減らす」が有効なため、プレビューは静止しています。",
+    "stepCake": "ケーキをタップしてろうそくを吹き消そう。",
+    "stepEmote": "エモートを送るとアバターが反応します。",
+    "stepTheme": "テーマを切り替えて雰囲気を変えよう。",
+    "goToPreview": "プレビューへ"
+  },
+  "share": {
+    "title": "もうすぐ誕生日の人はいますか？",
+    "subtitle": "いつもパーティーを企画してくれる友だちに HAPPYROOM を教えてあげましょう。",
+    "copy": "リンクをコピー",
+    "copied": "コピーしました",
+    "native": "共有…",
+    "copyFailed": "コピーできませんでした。リンクを選択して手動でコピーしてください。",
+    "qrAlt": "{url} へのQRコード",
+    "qrCaption": "スマホで読み取って開く"
+  },
+  "privacy": {
+    "title": "プライバシー、安全、やさしさを設計から",
+    "subtitle": "誕生日はプライベートなもの。HAPPYROOM はそれを大切にします。",
+    "unlisted": {
+      "title": "非公開・招待制のルーム",
+      "body": "ルームが検索結果や公開リストに表示されることはありません。入室には招待が必要で、アクセスコードも設定できます。"
+    },
+    "noAccount": {
+      "title": "アカウント不要",
+      "body": "ゲストは表示名だけで参加できます。主催者も登録なしでルームを作成でき、復元コードで管理できます。"
+    },
+    "hostControls": {
+      "title": "主催者がしっかり管理",
+      "body": "ルームのロック、チャットのミュート、ゲストの退出、メッセージや写真の承認ができます。"
+    },
+    "media": {
+      "title": "思い出はあなたのもの",
+      "body": "写真はあなたの許可がある場合のみアップロードされ、主催者の承認後に表示され、いつでも削除できます。"
+    },
+    "data": {
+      "title": "最小限の分析",
+      "body": "名前やメッセージを含まない形でイベントを集計します。同意がなければ、あなたや端末を識別する情報は使いません。"
+    },
+    "ages": {
+      "title": "友だちと家族のために",
+      "body": "公開チャット、知らない人からのDM、オープンワールドの探索はありません。報告とブロックはいつでもワンタップです。"
+    }
+  },
+  "finalCta": {
+    "title": "次の誕生日は、みんながそこにいるように。",
+    "subtitle": "これからは、みんなが集まれるから。"
+  },
+  "footer": {
+    "tagline": "どこにいても、一緒にお祝い。",
+    "analyticsSettings": "分析の設定",
+    "rights": "© {year} HAPPYROOM"
+  },
+  "consent": {
+    "title": "HAPPYROOM の改善にご協力いただけますか？",
+    "body": "再訪問を把握するため、端末内だけに保存されるランダムなIDを許可してください。名前、メッセージ、連絡先は一切収集しません。許可しない場合は匿名のイベントのみを集計します。",
+    "accept": "許可する",
+    "decline": "許可しない",
+    "close": "閉じる"
+  },
+  "errors": {
+    "title": "問題が発生しました",
+    "body": "パーティーで小さなトラブルが起きました。もう一度お試しください。",
+    "retry": "再試行",
+    "notFoundTitle": "このページは見つかりません",
+    "notFoundBody": "リンクが間違っているか、ルームが終了した可能性があります。",
+    "home": "ホームに戻る"
+  },
+  "scene": {
+    "cake": "バースデーケーキ",
+    "giftTable": "ギフトテーブル",
+    "memoryWall": "メモリーウォール",
+    "photoBooth": "フォトブース"
+  },
+  "avatars": {
+    "sunny": "サニー",
+    "berry": "ベリー",
+    "mint": "ミント",
+    "cocoa": "ココア",
+    "sky": "スカイ",
+    "plum": "プラム"
+  },
+  "emotes": {
+    "wave": "手をふる",
+    "clap": "拍手",
+    "dance": "ダンス",
+    "celebrate": "お祝い",
+    "heart": "ハート",
+    "laugh": "笑う"
+  },
+  "gifts": {
+    "cake_topper": "ケーキトッパー",
+    "flower_bouquet": "花束",
+    "teddy_bear": "テディベア",
+    "balloon_bouquet": "バルーンブーケ",
+    "star": "スター",
+    "confetti_box": "紙吹雪ボックス"
+  },
+  "cakes": {
+    "classic_vanilla": "クラシックバニラ",
+    "berry_dream": "ベリードリーム",
+    "chocolate_gold": "チョコレートゴールド"
+  },
+  "decorations": {
+    "balloons_pastel": "パステルバルーン",
+    "balloons_gold": "ゴールドバルーン",
+    "fairy_lights": "フェアリーライト"
+  },
+  "create": {
+    "title": "お誕生日ルームを作る",
+    "subtitle": "1分もかかりません。アカウント不要です。",
+    "step": "ステップ {current}/{total}",
+    "back": "戻る",
+    "next": "次へ",
+    "submit": "ルームを作成",
+    "submitting": "ルームを作成中…",
+    "steps": {
+      "event": "イベント",
+      "names": "名前",
+      "theme": "テーマ",
+      "cake": "ケーキ",
+      "time": "日時",
+      "privacy": "公開設定",
+      "review": "確認"
+    },
+    "event": {
+      "label": "何をお祝いしますか？",
+      "birthday": "誕生日",
+      "later": "ほかのお祝いは今後追加予定"
+    },
+    "honoree": {
+      "label": "誕生日の主役は？",
+      "placeholder": "例：マイ",
+      "help": "ルーム内に表示されます。許可しない限り、リンクのプレビューには表示されません。"
+    },
+    "host": {
+      "label": "あなたの名前（主催者）",
+      "placeholder": "例：サン"
+    },
+    "theme": {
+      "label": "ルームの雰囲気を選ぶ"
+    },
+    "cake": {
+      "label": "ケーキを選ぶ"
+    },
+    "decoration": {
+      "label": "飾りつけ"
+    },
+    "time": {
+      "label": "パーティーはいつ？",
+      "now": "今すぐ始める",
+      "scheduled": "日時を予約",
+      "dateTime": "日付と時刻",
+      "timeZone": "タイムゾーン"
+    },
+    "privacy": {
+      "label": "誰が入れますか？",
+      "inviteLink": "招待リンクを持っている人",
+      "inviteLinkHelp": "ルームが公開されることはありません。リンクを送った人だけが参加できます。",
+      "accessCode": "招待リンク＋アクセスコード",
+      "accessCodeHelp": "ゲストは別途伝える短いコードも必要です。",
+      "codeLabel": "アクセスコード（英数字4〜12文字）",
+      "codePlaceholder": "例：CAKE24"
+    },
+    "review": {
+      "title": "準備はいいですか？",
+      "honoree": "主役",
+      "host": "主催者",
+      "theme": "テーマ",
+      "cake": "ケーキ",
+      "time": "日時",
+      "privacy": "公開設定",
+      "now": "今すぐ"
+    },
+    "lostSession": "このブラウザがあなたを主催者として記憶します。データを消去したり端末を変えたりした場合は、次に表示される復元コードが必要です。",
+    "errors": {
+      "required": "入力してください。",
+      "too_long": "少し長すぎます。",
+      "invalid_access_code": "英数字4〜12文字で入力してください。",
+      "in_past": "未来の日時を選んでください。",
+      "too_far": "1年以内の日時を選んでください。",
+      "invalid_timezone": "有効なタイムゾーンを選んでください。",
+      "rate_limited": "短時間に多くのルームが作成されました。しばらくしてからお試しください。",
+      "network": "HAPPYROOM に接続できません。通信環境を確認して再度お試しください。",
+      "generic": "ルームの作成中に問題が発生しました。もう一度お試しください。"
+    },
+    "done": {
+      "title": "ルームの準備ができました！🎉",
+      "subtitle": "招待リンクを好きなチャットアプリで友だちや家族に送りましょう。",
+      "inviteLabel": "招待リンク",
+      "roomCode": "ルームコード：{code}",
+      "recoveryTitle": "主催者の復元コードを保存してください",
+      "recoveryBody": "表示されるのは今回だけです。別の端末やブラウザで主催者の権限を取り戻すときに使います。",
+      "copyCode": "コードをコピー",
+      "codeCopied": "コピーしました",
+      "downloadCode": "ファイルでダウンロード",
+      "acknowledge": "復元コードを保存しました",
+      "enter": "パーティーに入る",
+      "fileHeading": "HAPPYROOM 主催者復元コード"
+    }
+  },
+  "join": {
+    "title": "ルームに参加",
+    "subtitle": "受け取った招待リンクを貼り付けるか、ルームコードを入力してください。",
+    "label": "招待リンクまたはルームコード",
+    "placeholder": "https://…/r/abcd2345?i=… または abcd2345",
+    "submit": "続ける",
+    "invalid": "HAPPYROOM のリンクまたはルームコードではないようです。",
+    "help": "ルームコードは英数字8文字です。非公開ルームには主催者からの招待リンクかアクセスコードも必要です。"
+  },
+  "lobby": {
+    "title": "{name}さんのお誕生日パーティー",
+    "startsAt": "開始：{time}",
+    "invitedBadge": "招待されています",
+    "memberBadge": "おかえりなさい",
+    "hostBadge": "あなたが主催者です",
+    "nameLabel": "表示名",
+    "namePlaceholder": "友だちにどう表示しますか？",
+    "avatarLabel": "アバターを選ぶ",
+    "accessCodeLabel": "アクセスコード",
+    "accessCodeHelp": "主催者がゲストに伝えたコードです。",
+    "enter": "ルームに入る",
+    "entering": "参加中…",
+    "privacyNote": "名前とアバターはこのパーティーの参加者にだけ表示されます。",
+    "lockedTitle": "招待が必要です",
+    "lockedBody": "このパーティーは非公開です。主催者から届いた招待リンクを開くか、リンクを依頼してください。",
+    "recoverLink": "新しい端末の主催者ですか？",
+    "recoverLabel": "主催者の復元コード",
+    "recoverSubmit": "主催者の権限を復元",
+    "recovering": "確認中…",
+    "errors": {
+      "room_not_found": "このルームは存在しないか、終了しました。",
+      "invitation_required": "参加するには主催者からの招待リンクが必要です。",
+      "invalid_invitation": "この招待リンクは無効です。新しいリンクを主催者に依頼してください。",
+      "access_code_required": "アクセスコードを入力してください。",
+      "invalid_access_code": "アクセスコードが正しくありません。",
+      "room_locked": "主催者がルームをロックしています。",
+      "banned": "このルームには参加できません。",
+      "removed": "主催者によってルームから退出させられました。",
+      "invalid_recovery_code": "復元コードがこのルームと一致しません。",
+      "rate_limited": "試行回数が多すぎます。1分ほどお待ちください。",
+      "not_configured": "パーティーサーバーがまだ設定されていません。",
+      "validation_failed": "名前を確認して、もう一度お試しください。",
+      "network": "HAPPYROOM に接続できません。通信環境を確認してください。",
+      "generic": "問題が発生しました。もう一度お試しください。"
+    }
+  },
+  "party": {
+    "title": "{name}さんのお誕生日",
+    "online": "{count, plural, other {#人が参加中}}",
+    "host": "主催者",
+    "you": "あなた",
+    "offline": "再接続中…",
+    "invite": "招待",
+    "inviteTitle": "友だちを招待",
+    "inviteBody": "新しいリンクはすべて非公開です。リンクを持っている人はこのパーティーに参加できます。",
+    "inviteCreating": "新しい招待リンクを作成中…",
+    "close": "閉じる",
+    "leave": "退出",
+    "status": {
+      "connecting": "接続中…",
+      "connected": "接続済み",
+      "reconnecting": "再接続中…",
+      "disconnected": "切断されました",
+      "error": "接続エラー"
+    },
+    "retry": "再試行",
+    "controlsDesktop": "WASD または矢印キーで移動",
+    "controlsMobile": "ジョイスティックをドラッグして移動",
+    "joystick": "移動用ジョイスティック",
+    "actions": {
+      "emotes": "エモート",
+      "wish": "メッセージ",
+      "gift": "ギフト",
+      "photo": "写真",
+      "people": "参加者"
+    },
+    "ceremony": {
+      "start": "ろうそくセレモニーを始める",
+      "restart": "もう一度お祝い",
+      "hostOnly": "セレモニーを始められるのは主催者だけです。",
+      "preparing": "ケーキのまわりに集まろう…",
+      "countdown": "願いごとをどうぞ…",
+      "blow": "ろうそくを吹き消そう！🌬️",
+      "blownBy": "{name}さんがろうそくを吹き消しました！",
+      "autoBlown": "ふーっ！ろうそくが消えました！",
+      "celebrate": "{name}さん、お誕生日おめでとう！🎉",
+      "complete": "素敵な瞬間でした。写真に残しましょう！"
+    },
+    "panels": {
+      "people": "参加者",
+      "wishes": "メッセージ",
+      "gifts": "ギフト",
+      "pending": "承認待ち"
+    },
+    "wish": {
+      "placeholder": "お誕生日メッセージを書く…",
+      "send": "メッセージを送る",
+      "sent": "ありがとう！主催者が承認すると表示されます。",
+      "sentApproved": "メッセージがメモリーウォールに飾られました。",
+      "empty": "まだメッセージはありません。最初の一通をどうぞ！",
+      "approve": "承認",
+      "reject": "非表示",
+      "pendingEmpty": "承認待ちはありません。"
+    },
+    "gift": {
+      "choose": "ギフトを選ぶ",
+      "message": "メッセージを添える（任意）",
+      "send": "ギフトを贈る",
+      "sent": "ギフトを贈りました！🎁",
+      "empty": "まだギフトはありません。",
+      "open": "開ける",
+      "opened": "開封済み",
+      "from": "{name}さんから",
+      "disabled": "主催者がギフトを一時停止しています。",
+      "remove": "削除"
+    },
+    "moderation": {
+      "mute": "ミュート",
+      "unmute": "ミュート解除",
+      "remove": "退出させる",
+      "ban": "ブロック",
+      "lock": "ルームをロック",
+      "unlock": "ロック解除",
+      "giftsOn": "ギフトを許可",
+      "giftsOff": "ギフトを一時停止",
+      "confirmBan": "{name}さんを退出させ、再参加をブロックしますか？"
+    },
+    "snapshot": {
+      "take": "写真を撮る",
+      "taken": "{name}さんがパーティーの写真を撮りました 📸",
+      "notice": "写真には3Dルームと全員のアバター・名前が写ります。",
+      "share": "共有",
+      "download": "ダウンロード",
+      "title": "パーティー写真"
+    },
+    "errors": {
+      "forbidden": "この操作は主催者だけができます。",
+      "rate_limited": "少しゆっくりどうぞ 🙂",
+      "muted": "主催者によってミュートされています。",
+      "gifts_disabled": "ギフトは一時停止中です。",
+      "duplicate": "すでに送信済みです。",
+      "invalid_transition": "今はその操作はできません。",
+      "invalid_payload": "入力内容を確認してください。",
+      "kicked": "パーティーから退出させられました。",
+      "replaced": "別のタブでこのパーティーを開きました。",
+      "idle": "操作がなかったため切断されました。",
+      "connect_failed": "パーティーサーバーに接続できませんでした。",
+      "grant_failed": "このパーティーへのアクセスを取得できませんでした。"
+    }
+  },
+  "auth": {
+    "title": "HAPPYROOM World へようこそ",
+    "subtitle": "あなたの世界。あなたの仲間。あなたのお祝い。",
+    "guest": "ゲストとして遊ぶ",
+    "guestHint": "アカウント不要。キャラクターはこのブラウザに保存されます。",
+    "or": "または",
+    "username": "ユーザー名",
+    "password": "パスワード",
+    "passwordHint": "10文字以上。",
+    "signIn": "ログイン",
+    "createAccount": "アカウント作成",
+    "toRegister": "はじめての方：アカウント作成",
+    "toLogin": "アカウントをお持ちの方：ログイン",
+    "google": "Google で続ける",
+    "signOut": "ログアウト",
+    "working": "お待ちください…",
+    "errors": {
+      "invalid_credentials": "ユーザー名またはパスワードが違います。",
+      "username_taken": "そのユーザー名は使われています。",
+      "invalid_username": "小文字・数字・_ で3〜24文字にしてください。",
+      "password_too_short": "10文字以上にしてください。",
+      "rate_limited": "試行回数が多すぎます。数分お待ちください。",
+      "provider_error": "Google ログインに失敗しました。",
+      "not_configured": "このログイン方法は設定されていません。",
+      "network": "HAPPYROOM に接続できません。",
+      "validation_failed": "入力内容を確認してください。",
+      "generic": "問題が発生しました。もう一度お試しください。"
+    }
+  },
+  "character": {
+    "title": "キャラクターを作成",
+    "subtitle": "ワールドでの見た目を選びましょう。",
+    "name": "表示名",
+    "nameHelp": "2〜24文字。重複不可。",
+    "avatar": "アバター",
+    "age": "年齢層",
+    "ageHelp": "年少のプレイヤーを守るために使います。13歳未満は公開チャットを使えません。",
+    "ages": {
+      "under13": "13歳未満",
+      "teen": "13〜17歳",
+      "adult": "18歳以上"
+    },
+    "chat": "公開チャットを許可",
+    "listed": "プレイヤー一覧に表示する",
+    "save": "ワールドに入る",
+    "saving": "保存中…",
+    "errors": {
+      "name_taken": "その名前は使われています。",
+      "invalid_display_name": "2〜24文字にしてください。",
+      "generic": "保存できませんでした。"
+    }
+  },
+  "world": {
+    "loading": "ワールドを読み込み中…",
+    "loadingZone": "{zone}に入っています…",
+    "travelling": "移動中…",
+    "online": "{count, plural, other {#人オンライン}}",
+    "here": "この場所",
+    "status": {
+      "idle": "オフライン",
+      "connecting": "接続中…",
+      "connected": "接続済み",
+      "reconnecting": "再接続中…",
+      "disconnected": "切断",
+      "error": "接続エラー"
+    },
+    "retry": "再試行",
+    "interactKey": "E",
+    "minimap": "{zone}の地図",
+    "you": "あなた",
+    "places": "場所",
+    "travel": "行く",
+    "current": "現在地",
+    "emotes": "エモート",
+    "settings": "設定",
+    "close": "閉じる",
+    "signOut": "ログアウト",
+    "quality": "グラフィック品質",
+    "qualityAuto": "自動",
+    "qualityHigh": "高",
+    "qualityLow": "省電力",
+    "showStats": "パフォーマンス表示",
+    "moveButtons": "移動ボタンを表示",
+    "sprintToggle": "常に走る",
+    "controlsDesktop": "WASD / 矢印で移動 · Shift で走る · ドラッグで視点 · E で操作",
+    "controlsMobile": "ジョイスティックで移動（端まで倒すと走る）· E ボタンで操作",
+    "move": {
+      "up": "前へ",
+      "down": "後ろへ",
+      "left": "左へ",
+      "right": "右へ"
+    },
+    "joystick": "移動用ジョイスティック",
+    "stats": "{fps} FPS · {calls} 描画 · {memory}",
+    "chat": {
+      "title": "チャット",
+      "placeholder": "やさしい言葉で話しかけよう…",
+      "send": "送信",
+      "hide": "チャットを隠す",
+      "show": "チャット",
+      "kidsOff": "13歳未満のプレイヤーは公開チャットを使えません。",
+      "off": "設定でチャットがオフになっています。",
+      "block": "ブロック",
+      "report": "報告",
+      "blocked": "{name}さんをブロックしました。",
+      "reported": "ありがとうございます。確認します。",
+      "empty": "まだメッセージはありません。あいさつしよう！👋",
+      "reportTitle": "{name}さんを報告",
+      "reportReason": "理由",
+      "reportSend": "報告する"
+    },
+    "reasons": {
+      "harassment": "嫌がらせ",
+      "hate": "ヘイト",
+      "sexual": "性的な内容",
+      "spam": "スパム",
+      "self_harm": "自傷",
+      "violence": "暴力",
+      "other": "その他"
+    },
+    "portal": {
+      "birthday_house": "バースデーハウスに入る",
+      "garden_terrace": "ガーデンテラスへ",
+      "central_plaza": "セントラルプラザへ戻る"
+    },
+    "interact": {
+      "fountain": "噴水を見る",
+      "read_sign": "看板を読む",
+      "gazebo": "ガゼボで休む"
+    },
+    "message": {
+      "fountain": "噴水がきらめいています。願いごとをどうぞ！✨",
+      "sign_birthday_house": "バースデーハウス — 非公開の誕生日パーティーを開く・参加する。",
+      "sign_garden": "ガーデンテラス → 静かな庭でのんびり。",
+      "gazebo": "友だちとおしゃべりできる居心地のいい場所。"
+    },
+    "expansion": {
+      "market": "近日公開：マーケット",
+      "stage": "近日公開：ステージ"
+    },
+    "house": {
+      "title": "バースデーハウス 🎂",
+      "body": "誕生日パーティーは非公開です。自分で開くか、招待リンクやルームコードで参加しましょう。",
+      "create": "誕生日パーティーを作る",
+      "join": "パーティーに参加する",
+      "back": "プラザに戻る"
+    },
+    "backToPlaza": "プラザに戻る",
+    "errors": {
+      "too_far": "もう少し近づいてください。",
+      "rate_limited": "少しゆっくりどうぞ 🙂",
+      "chat_disabled": "このアカウントではチャットがオフです。",
+      "chat_filtered": "メッセージは送信されませんでした。やさしい言葉でお願いします。",
+      "invalid_payload": "うまくいきませんでした。",
+      "connect_failed": "ワールドサーバーに接続できません。",
+      "zone_not_found": "その場所は開いていません。",
+      "forbidden": "そこへは行けません。",
+      "profile_incomplete": "先にキャラクターを作成してください。",
+      "unauthenticated": "もう一度ログインしてください。",
+      "network": "HAPPYROOM に接続できません。",
+      "enter_failed": "その場所に入れませんでした。",
+      "replaced": "別のタブでワールドを開きました。",
+      "banned": "このアカウントはワールドに入れません。",
+      "not_configured": "ワールドサーバーが設定されていません。"
+    }
+  },
+  "nav2": {
+    "world": "ワールド"
+  }
+}

@@ -1,0 +1,42 @@
+/*
+ * Explicit sources only: Tailwind's automatic detection would also watch generated folders
+ * (.next/dev/logs is rewritten on every page load in dev), which caused an endless
+ * rebuild → reload loop. Only real UI source folders are scanned.
+ */
+@import "tailwindcss" source(none);
+@import "../../../packages/ui/src/styles/tokens.css";
+
+@source "../app";
+@source "../components";
+@source "../features";
+@source "../../../packages/ui/src";
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    @apply bg-canvas font-sans text-ink antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  :focus-visible {
+    outline-color: var(--color-dream);
+  }
+  ::selection {
+    background: var(--color-pink-100);
+  }
+  /* Japanese and Vietnamese line breaking. */
+  :lang(ja) {
+    line-break: strict;
+    word-break: normal;
+    overflow-wrap: anywhere;
+  }
+}
+
+@utility bg-party-glow {
+  background:
+    radial-gradient(60rem 30rem at 85% -10%, rgb(145 120 232 / 0.22), transparent 60%),
+    radial-gradient(40rem 24rem at -10% 20%, rgb(249 166 186 / 0.22), transparent 60%),
+    radial-gradient(36rem 20rem at 50% 110%, rgb(107 203 190 / 0.18), transparent 60%);
+}

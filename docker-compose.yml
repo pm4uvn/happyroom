@@ -1,0 +1,35 @@
+# Local development services. Not a production deployment.
+#   pnpm db:up      -> postgres + redis
+#   pnpm db:reset   -> apply migrations + seeds
+name: happyroom
+
+services:
+  postgres:
+    image: postgres:17.6-alpine
+    environment:
+      POSTGRES_USER: happyroom
+      POSTGRES_PASSWORD: happyroom
+      POSTGRES_DB: happyroom
+    ports:
+      - "54329:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U happyroom -d happyroom"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  redis:
+    image: redis:7.4-alpine
+    command: ["redis-server", "--save", "", "--appendonly", "no"]
+    ports:
+      - "63790:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+volumes:
+  pgdata:

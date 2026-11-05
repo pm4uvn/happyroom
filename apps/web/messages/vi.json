@@ -1,0 +1,593 @@
+{
+  "meta": {
+    "title": "HAPPYROOM — Cùng nhau ăn mừng. Ở bất cứ đâu.",
+    "description": "Tạo phòng sinh nhật 3D ấm cúng trong vài giây, chia sẻ một đường link và cùng bạn bè ăn mừng trực tiếp ở bất cứ đâu. Không cần cài ứng dụng, không cần đăng ký."
+  },
+  "nav": {
+    "skipToContent": "Chuyển đến nội dung",
+    "howItWorks": "Cách hoạt động",
+    "themes": "Chủ đề",
+    "demo": "Dùng thử",
+    "privacy": "Quyền riêng tư",
+    "language": "Ngôn ngữ",
+    "home": "Trang chủ HAPPYROOM"
+  },
+  "common": {
+    "createRoom": "Tạo phòng sinh nhật",
+    "joinRoom": "Vào phòng",
+    "comingSoon": "Sắp mở",
+    "comingSoonHint": "Tính năng tạo và tham gia phòng sẽ mở ở bản phát hành tiếp theo. Mọi thứ trên trang này đều đã hoạt động.",
+    "localPreview": "Bản xem trước cục bộ · không gửi dữ liệu đi đâu cả"
+  },
+  "hero": {
+    "eyebrow": "Tiệc sinh nhật trực tuyến, thật ấm cúng",
+    "title": "Cùng nhau ăn mừng. Ở bất cứ đâu.",
+    "subtitle": "Tạo một phòng sinh nhật 3D xinh xắn trong chưa đầy một phút, chia sẻ một đường link và tụ họp dưới dạng nhân vật dễ thương để cùng thổi nến — từ bất kỳ điện thoại hay trình duyệt nào.",
+    "noInstall": "Không cần cài ứng dụng",
+    "noSignup": "Khách không cần đăng ký",
+    "private": "Riêng tư theo mặc định"
+  },
+  "steps": {
+    "title": "Ba bước để có một bữa tiệc",
+    "subtitle": "Để người có sinh nhật cảm thấy được yêu thương, còn chủ tiệc thì không bị quá tải.",
+    "create": {
+      "title": "Tạo",
+      "body": "Chọn chủ đề, bánh kem và thời gian. Phòng sẵn sàng trong vài giây — không cần tài khoản."
+    },
+    "invite": {
+      "title": "Mời",
+      "body": "Chia sẻ link riêng tư hoặc mã QR qua bất kỳ ứng dụng chat nào. Thêm mã truy cập để riêng tư hơn."
+    },
+    "celebrate": {
+      "title": "Ăn mừng",
+      "body": "Bạn bè vào phòng dưới dạng nhân vật, gửi lời chúc và quà, rồi cùng thổi nến đồng thời."
+    }
+  },
+  "themes": {
+    "title": "Chọn không khí",
+    "subtitle": "Hai mẫu phòng sinh nhật được thiết kế tỉ mỉ. Các dịp ăn mừng khác sẽ sớm ra mắt.",
+    "preview": "Xem trước 3D",
+    "selected": "Đang hiển thị",
+    "cozy_twilight": {
+      "name": "Hoàng hôn ấm áp",
+      "description": "Sắc tím oải hương, đèn nháy ấm áp và chiếc bánh lung linh. Hoàn hảo cho tiệc buổi tối."
+    },
+    "sunny_garden": {
+      "name": "Khu vườn nắng",
+      "description": "Tường xanh bạc hà, nắng vàng rực rỡ và cảm giác dã ngoại. Tươi sáng và vui vẻ."
+    }
+  },
+  "demo": {
+    "label": "Bản xem trước 3D tương tác của phòng sinh nhật",
+    "title": "Thử phòng tiệc",
+    "subtitle": "Bản xem trước này chạy hoàn toàn trong trình duyệt của bạn. Trong bữa tiệc thật, mọi khách đều thấy cùng một khoảnh khắc vào cùng một lúc.",
+    "tapCake": "Thổi nến",
+    "relight": "Thắp lại nến",
+    "candlesOut": "Ước một điều nhé! 🎉",
+    "emotes": "Biểu cảm",
+    "theme": "Chủ đề",
+    "dragHint": "Kéo để nhìn xung quanh · chạm vào bánh",
+    "loading": "Đang chuẩn bị bữa tiệc…",
+    "fallbackTitle": "Không thể hiển thị 3D",
+    "fallbackBody": "Thiết bị hoặc cài đặt của bạn không hỗ trợ 3D ở đây, nên chúng tôi hiển thị hình minh họa nhẹ. Các bữa tiệc cũng sẽ có chế độ 2D.",
+    "reducedMotion": "Chế độ giảm chuyển động đang bật, nên bản xem trước sẽ đứng yên.",
+    "stepCake": "Chạm vào bánh để thổi nến.",
+    "stepEmote": "Gửi biểu cảm — các nhân vật sẽ phản ứng.",
+    "stepTheme": "Đổi chủ đề để thay đổi không khí.",
+    "goToPreview": "Đến bản xem trước"
+  },
+  "share": {
+    "title": "Bạn biết ai sắp có sinh nhật không?",
+    "subtitle": "Chia sẻ HAPPYROOM với người bạn luôn là người tổ chức tiệc.",
+    "copy": "Sao chép link",
+    "copied": "Đã sao chép link",
+    "native": "Chia sẻ…",
+    "copyFailed": "Không sao chép được. Hãy chọn link và sao chép thủ công.",
+    "qrAlt": "Mã QR dẫn đến {url}",
+    "qrCaption": "Quét để mở trên điện thoại"
+  },
+  "privacy": {
+    "title": "Riêng tư, an toàn và tử tế ngay từ thiết kế",
+    "subtitle": "Sinh nhật là chuyện riêng. HAPPYROOM được xây dựng để giữ nó như vậy.",
+    "unlisted": {
+      "title": "Phòng không công khai, chỉ dành cho người được mời",
+      "body": "Phòng không bao giờ xuất hiện trên công cụ tìm kiếm hay danh sách công khai. Cần có lời mời — và có thể thêm mã truy cập."
+    },
+    "noAccount": {
+      "title": "Không cần tài khoản",
+      "body": "Khách chỉ cần một tên hiển thị. Chủ tiệc có thể tạo phòng mà không cần đăng ký và giữ một mã khôi phục."
+    },
+    "hostControls": {
+      "title": "Chủ tiệc luôn kiểm soát",
+      "body": "Khóa phòng, tắt chat, mời khách ra, duyệt lời chúc và ảnh trước khi người khác nhìn thấy."
+    },
+    "media": {
+      "title": "Kỷ niệm của bạn, không phải quảng cáo của chúng tôi",
+      "body": "Ảnh chỉ được tải lên khi bạn cho phép, chỉ hiển thị sau khi chủ tiệc duyệt và có thể xóa bất cứ lúc nào."
+    },
+    "data": {
+      "title": "Phân tích tối thiểu",
+      "body": "Chúng tôi đếm sự kiện sản phẩm mà không có tên hay tin nhắn. Nếu bạn không đồng ý, không có gì nhận dạng bạn hoặc thiết bị của bạn."
+    },
+    "ages": {
+      "title": "Dành cho bạn bè và gia đình",
+      "body": "Không có chat công khai, không có tin nhắn riêng từ người lạ, không có khám phá thế giới mở. Báo cáo và chặn luôn chỉ cách một lần chạm."
+    }
+  },
+  "finalCta": {
+    "title": "Sinh nhật tới của họ có thể như thể mọi người đều có mặt.",
+    "subtitle": "Vì giờ đây, ai cũng có thể có mặt."
+  },
+  "footer": {
+    "tagline": "Cùng nhau ăn mừng. Ở bất cứ đâu.",
+    "analyticsSettings": "Cài đặt phân tích",
+    "rights": "© {year} HAPPYROOM"
+  },
+  "consent": {
+    "title": "Giúp chúng tôi cải thiện HAPPYROOM?",
+    "body": "Cho phép một mã ngẫu nhiên chỉ lưu trên thiết bị để chúng tôi hiểu lượt quay lại. Chúng tôi không bao giờ thu thập tên, tin nhắn hay danh bạ. Nếu không cho phép, chúng tôi chỉ đếm sự kiện ẩn danh.",
+    "accept": "Cho phép",
+    "decline": "Không, cảm ơn",
+    "close": "Đóng"
+  },
+  "errors": {
+    "title": "Đã xảy ra lỗi",
+    "body": "Bữa tiệc gặp chút trục trặc. Vui lòng thử lại.",
+    "retry": "Thử lại",
+    "notFoundTitle": "Trang này đã đi lạc",
+    "notFoundBody": "Có thể đường link bị gõ sai, hoặc phòng tiệc đã kết thúc.",
+    "home": "Về trang chủ"
+  },
+  "scene": {
+    "cake": "Bánh sinh nhật",
+    "giftTable": "Bàn quà",
+    "memoryWall": "Bức tường kỷ niệm",
+    "photoBooth": "Góc chụp ảnh"
+  },
+  "avatars": {
+    "sunny": "Nắng",
+    "berry": "Dâu",
+    "mint": "Bạc hà",
+    "cocoa": "Ca cao",
+    "sky": "Bầu trời",
+    "plum": "Mận"
+  },
+  "emotes": {
+    "wave": "Vẫy tay",
+    "clap": "Vỗ tay",
+    "dance": "Nhảy",
+    "celebrate": "Ăn mừng",
+    "heart": "Thả tim",
+    "laugh": "Cười"
+  },
+  "gifts": {
+    "cake_topper": "Đồ trang trí bánh",
+    "flower_bouquet": "Bó hoa",
+    "teddy_bear": "Gấu bông",
+    "balloon_bouquet": "Chùm bóng bay",
+    "star": "Ngôi sao",
+    "confetti_box": "Hộp pháo giấy"
+  },
+  "cakes": {
+    "classic_vanilla": "Vani cổ điển",
+    "berry_dream": "Giấc mơ dâu",
+    "chocolate_gold": "Sô-cô-la vàng"
+  },
+  "decorations": {
+    "balloons_pastel": "Bóng bay pastel",
+    "balloons_gold": "Bóng bay vàng",
+    "fairy_lights": "Đèn nháy"
+  },
+  "create": {
+    "title": "Tạo phòng sinh nhật",
+    "subtitle": "Chưa đến một phút. Không cần tài khoản.",
+    "step": "Bước {current}/{total}",
+    "back": "Quay lại",
+    "next": "Tiếp",
+    "submit": "Tạo phòng",
+    "submitting": "Đang tạo phòng…",
+    "steps": {
+      "event": "Dịp",
+      "names": "Tên",
+      "theme": "Chủ đề",
+      "cake": "Bánh",
+      "time": "Thời gian",
+      "privacy": "Riêng tư",
+      "review": "Xem lại"
+    },
+    "event": {
+      "label": "Chúng ta ăn mừng điều gì?",
+      "birthday": "Sinh nhật",
+      "later": "Các dịp khác sẽ có sau"
+    },
+    "honoree": {
+      "label": "Ai là người có sinh nhật?",
+      "placeholder": "ví dụ: Mai",
+      "help": "Hiển thị trong phòng. Không hiện trong bản xem trước của link trừ khi bạn cho phép."
+    },
+    "host": {
+      "label": "Tên của bạn (chủ tiệc)",
+      "placeholder": "ví dụ: Sang"
+    },
+    "theme": {
+      "label": "Chọn không khí cho phòng"
+    },
+    "cake": {
+      "label": "Chọn bánh"
+    },
+    "decoration": {
+      "label": "Trang trí"
+    },
+    "time": {
+      "label": "Khi nào diễn ra tiệc?",
+      "now": "Bắt đầu ngay",
+      "scheduled": "Hẹn giờ",
+      "dateTime": "Ngày và giờ",
+      "timeZone": "Múi giờ"
+    },
+    "privacy": {
+      "label": "Ai có thể vào?",
+      "inviteLink": "Bất kỳ ai có link mời",
+      "inviteLinkHelp": "Phòng không bao giờ được liệt kê công khai. Chỉ người nhận link mới vào được.",
+      "accessCode": "Link mời + mã truy cập",
+      "accessCodeHelp": "Khách cần thêm một mã ngắn mà bạn báo riêng.",
+      "codeLabel": "Mã truy cập (4–12 chữ hoặc số)",
+      "codePlaceholder": "ví dụ: CAKE24"
+    },
+    "review": {
+      "title": "Sẵn sàng chưa?",
+      "honoree": "Người có sinh nhật",
+      "host": "Chủ tiệc",
+      "theme": "Chủ đề",
+      "cake": "Bánh",
+      "time": "Thời gian",
+      "privacy": "Riêng tư",
+      "now": "Bắt đầu ngay"
+    },
+    "lostSession": "Trình duyệt này sẽ ghi nhớ bạn là chủ tiệc. Nếu bạn xóa dữ liệu hoặc đổi thiết bị, bạn sẽ cần mã khôi phục hiển thị ở bước sau.",
+    "errors": {
+      "required": "Vui lòng điền thông tin này.",
+      "too_long": "Hơi dài quá.",
+      "invalid_access_code": "Dùng 4–12 chữ hoặc số.",
+      "in_past": "Hãy chọn thời điểm trong tương lai.",
+      "too_far": "Hãy chọn thời điểm trong vòng một năm.",
+      "invalid_timezone": "Hãy chọn múi giờ hợp lệ.",
+      "rate_limited": "Bạn vừa tạo nhiều phòng. Vui lòng đợi một chút rồi thử lại.",
+      "network": "Không kết nối được HAPPYROOM. Kiểm tra mạng và thử lại.",
+      "generic": "Đã có lỗi khi tạo phòng. Vui lòng thử lại."
+    },
+    "done": {
+      "title": "Phòng đã sẵn sàng! 🎉",
+      "subtitle": "Gửi link mời cho bạn bè và gia đình qua bất kỳ ứng dụng chat nào.",
+      "inviteLabel": "Link mời",
+      "roomCode": "Mã phòng: {code}",
+      "recoveryTitle": "Lưu mã khôi phục chủ tiệc",
+      "recoveryBody": "Đây là lần duy nhất mã được hiển thị. Dùng nó để lấy lại quyền chủ tiệc trên thiết bị hoặc trình duyệt khác.",
+      "copyCode": "Sao chép mã",
+      "codeCopied": "Đã sao chép",
+      "downloadCode": "Tải về dạng tệp",
+      "acknowledge": "Tôi đã lưu mã khôi phục",
+      "enter": "Vào bữa tiệc",
+      "fileHeading": "Mã khôi phục chủ tiệc HAPPYROOM"
+    }
+  },
+  "join": {
+    "title": "Vào phòng",
+    "subtitle": "Dán link mời bạn nhận được, hoặc nhập mã phòng.",
+    "label": "Link mời hoặc mã phòng",
+    "placeholder": "https://…/r/abcd2345?i=… hoặc abcd2345",
+    "submit": "Tiếp tục",
+    "invalid": "Đây không giống link hay mã phòng HAPPYROOM.",
+    "help": "Mã phòng gồm 8 chữ và số. Phòng riêng tư còn cần link mời hoặc mã truy cập từ chủ tiệc."
+  },
+  "lobby": {
+    "title": "Tiệc sinh nhật của {name}",
+    "startsAt": "Bắt đầu lúc {time}",
+    "invitedBadge": "Bạn được mời",
+    "memberBadge": "Chào mừng trở lại",
+    "hostBadge": "Bạn là chủ tiệc",
+    "nameLabel": "Tên hiển thị",
+    "namePlaceholder": "Bạn bè sẽ thấy bạn với tên gì?",
+    "avatarLabel": "Chọn nhân vật",
+    "accessCodeLabel": "Mã truy cập",
+    "accessCodeHelp": "Chủ tiệc đã gửi mã này cho khách.",
+    "enter": "Vào phòng",
+    "entering": "Đang vào…",
+    "privacyNote": "Tên và nhân vật của bạn chỉ người trong bữa tiệc này nhìn thấy.",
+    "lockedTitle": "Cần lời mời",
+    "lockedBody": "Bữa tiệc này là riêng tư. Hãy mở link mời mà chủ tiệc đã gửi, hoặc xin họ một link.",
+    "recoverLink": "Bạn là chủ tiệc trên thiết bị mới?",
+    "recoverLabel": "Mã khôi phục chủ tiệc",
+    "recoverSubmit": "Khôi phục quyền chủ tiệc",
+    "recovering": "Đang kiểm tra…",
+    "errors": {
+      "room_not_found": "Phòng này không tồn tại hoặc đã kết thúc.",
+      "invitation_required": "Bạn cần link mời từ chủ tiệc để vào.",
+      "invalid_invitation": "Link mời này không còn hiệu lực. Hãy xin chủ tiệc link mới.",
+      "access_code_required": "Vui lòng nhập mã truy cập.",
+      "invalid_access_code": "Mã truy cập chưa đúng.",
+      "room_locked": "Chủ tiệc đã khóa phòng.",
+      "banned": "Bạn không thể vào phòng này.",
+      "removed": "Chủ tiệc đã mời bạn ra khỏi phòng.",
+      "invalid_recovery_code": "Mã khôi phục không khớp với phòng này.",
+      "rate_limited": "Thử quá nhiều lần. Vui lòng đợi một phút.",
+      "not_configured": "Máy chủ bữa tiệc chưa được cấu hình.",
+      "validation_failed": "Vui lòng kiểm tra lại tên và thử lại.",
+      "network": "Không kết nối được HAPPYROOM. Kiểm tra mạng của bạn.",
+      "generic": "Đã có lỗi. Vui lòng thử lại."
+    }
+  },
+  "party": {
+    "title": "Sinh nhật của {name}",
+    "online": "{count, plural, other {# người đang ở đây}}",
+    "host": "Chủ tiệc",
+    "you": "Bạn",
+    "offline": "đang kết nối lại…",
+    "invite": "Mời",
+    "inviteTitle": "Mời bạn bè",
+    "inviteBody": "Mỗi link mới đều riêng tư. Ai có link đều vào được bữa tiệc này.",
+    "inviteCreating": "Đang tạo link mời mới…",
+    "close": "Đóng",
+    "leave": "Rời phòng",
+    "status": {
+      "connecting": "Đang kết nối…",
+      "connected": "Đã kết nối",
+      "reconnecting": "Đang kết nối lại…",
+      "disconnected": "Mất kết nối",
+      "error": "Lỗi kết nối"
+    },
+    "retry": "Thử lại",
+    "controlsDesktop": "Di chuyển bằng WASD hoặc phím mũi tên",
+    "controlsMobile": "Kéo cần điều khiển để di chuyển",
+    "joystick": "Cần điều khiển di chuyển",
+    "actions": {
+      "emotes": "Biểu cảm",
+      "wish": "Lời chúc",
+      "gift": "Quà",
+      "photo": "Chụp ảnh",
+      "people": "Mọi người"
+    },
+    "ceremony": {
+      "start": "Bắt đầu nghi thức thổi nến",
+      "restart": "Ăn mừng lần nữa",
+      "hostOnly": "Chỉ chủ tiệc mới bắt đầu được nghi thức.",
+      "preparing": "Mọi người tập trung quanh bánh nào…",
+      "countdown": "Hãy ước một điều…",
+      "blow": "Thổi nến nào! 🌬️",
+      "blownBy": "{name} đã thổi tắt nến!",
+      "autoBlown": "Phù! Nến đã tắt!",
+      "celebrate": "Chúc mừng sinh nhật {name}! 🎉",
+      "complete": "Khoảnh khắc tuyệt vời. Chụp một tấm ảnh để lưu giữ nhé!"
+    },
+    "panels": {
+      "people": "Mọi người",
+      "wishes": "Lời chúc",
+      "gifts": "Quà",
+      "pending": "Chờ duyệt"
+    },
+    "wish": {
+      "placeholder": "Viết lời chúc sinh nhật…",
+      "send": "Gửi lời chúc",
+      "sent": "Cảm ơn! Lời chúc sẽ hiện sau khi chủ tiệc duyệt.",
+      "sentApproved": "Lời chúc của bạn đã lên bức tường kỷ niệm.",
+      "empty": "Chưa có lời chúc nào. Hãy là người đầu tiên!",
+      "approve": "Duyệt",
+      "reject": "Ẩn",
+      "pendingEmpty": "Không có gì chờ duyệt."
+    },
+    "gift": {
+      "choose": "Chọn quà",
+      "message": "Thêm lời nhắn (không bắt buộc)",
+      "send": "Gửi quà",
+      "sent": "Đã gửi quà! 🎁",
+      "empty": "Chưa có quà nào.",
+      "open": "Mở",
+      "opened": "Đã mở",
+      "from": "từ {name}",
+      "disabled": "Chủ tiệc đang tạm dừng tặng quà.",
+      "remove": "Gỡ"
+    },
+    "moderation": {
+      "mute": "Tắt tiếng",
+      "unmute": "Bật tiếng",
+      "remove": "Mời ra",
+      "ban": "Chặn",
+      "lock": "Khóa phòng",
+      "unlock": "Mở khóa phòng",
+      "giftsOn": "Cho phép tặng quà",
+      "giftsOff": "Tạm dừng tặng quà",
+      "confirmBan": "Mời {name} ra và chặn không cho vào lại?"
+    },
+    "snapshot": {
+      "take": "Chụp ảnh",
+      "taken": "{name} đã chụp ảnh bữa tiệc 📸",
+      "notice": "Ảnh chụp sẽ ghi lại phòng 3D cùng nhân vật và tên của mọi người.",
+      "share": "Chia sẻ",
+      "download": "Tải về",
+      "title": "Ảnh bữa tiệc"
+    },
+    "errors": {
+      "forbidden": "Chỉ chủ tiệc mới làm được việc này.",
+      "rate_limited": "Chậm lại một chút nhé 🙂",
+      "muted": "Chủ tiệc đã tắt tiếng bạn.",
+      "gifts_disabled": "Tặng quà đang tạm dừng.",
+      "duplicate": "Đã gửi rồi.",
+      "invalid_transition": "Hiện chưa thể làm việc này.",
+      "invalid_payload": "Vui lòng kiểm tra lại nội dung.",
+      "kicked": "Bạn đã bị mời ra khỏi bữa tiệc.",
+      "replaced": "Bạn đã mở bữa tiệc này ở một tab khác.",
+      "idle": "Bạn bị ngắt kết nối vì không hoạt động.",
+      "connect_failed": "Không kết nối được máy chủ bữa tiệc.",
+      "grant_failed": "Không lấy được quyền vào bữa tiệc này."
+    }
+  },
+  "auth": {
+    "title": "Chào mừng đến HAPPYROOM World",
+    "subtitle": "Thế giới của bạn. Người thân của bạn. Những dịp vui của bạn.",
+    "guest": "Chơi với tư cách khách",
+    "guestHint": "Không cần tài khoản. Nhân vật được lưu trong trình duyệt này.",
+    "or": "hoặc",
+    "username": "Tên đăng nhập",
+    "password": "Mật khẩu",
+    "passwordHint": "Tối thiểu 10 ký tự.",
+    "signIn": "Đăng nhập",
+    "createAccount": "Tạo tài khoản",
+    "toRegister": "Lần đầu? Tạo tài khoản",
+    "toLogin": "Đã có tài khoản? Đăng nhập",
+    "google": "Tiếp tục với Google",
+    "signOut": "Đăng xuất",
+    "working": "Vui lòng chờ…",
+    "errors": {
+      "invalid_credentials": "Sai tên đăng nhập hoặc mật khẩu.",
+      "username_taken": "Tên đăng nhập đã có người dùng.",
+      "invalid_username": "Dùng 3–24 chữ thường, số hoặc _.",
+      "password_too_short": "Tối thiểu 10 ký tự.",
+      "rate_limited": "Thử quá nhiều lần. Vui lòng đợi vài phút.",
+      "provider_error": "Đăng nhập Google thất bại.",
+      "not_configured": "Phương thức đăng nhập này chưa được cấu hình.",
+      "network": "Không kết nối được HAPPYROOM. Kiểm tra mạng.",
+      "validation_failed": "Vui lòng kiểm tra lại biểu mẫu.",
+      "generic": "Đã có lỗi. Vui lòng thử lại."
+    }
+  },
+  "character": {
+    "title": "Tạo nhân vật",
+    "subtitle": "Chọn cách mọi người trong thế giới nhìn thấy bạn.",
+    "name": "Tên hiển thị",
+    "nameHelp": "2–24 ký tự. Không được trùng.",
+    "avatar": "Nhân vật",
+    "age": "Nhóm tuổi",
+    "ageHelp": "Dùng để bảo vệ người chơi nhỏ tuổi. Người dưới 13 tuổi không dùng chat công khai.",
+    "ages": {
+      "under13": "Dưới 13",
+      "teen": "13–17",
+      "adult": "18+"
+    },
+    "chat": "Cho phép chat công khai",
+    "listed": "Hiện tôi trong danh sách người chơi",
+    "save": "Vào thế giới",
+    "saving": "Đang lưu…",
+    "errors": {
+      "name_taken": "Tên đã có người dùng. Hãy thử tên khác.",
+      "invalid_display_name": "Dùng 2–24 ký tự.",
+      "generic": "Không lưu được. Vui lòng thử lại."
+    }
+  },
+  "world": {
+    "loading": "Đang tải thế giới…",
+    "loadingZone": "Đang vào {zone}…",
+    "travelling": "Đang di chuyển…",
+    "online": "{count, plural, other {# đang online}}",
+    "here": "Ở nơi này",
+    "status": {
+      "idle": "Ngoại tuyến",
+      "connecting": "Đang kết nối…",
+      "connected": "Đã kết nối",
+      "reconnecting": "Đang kết nối lại…",
+      "disconnected": "Mất kết nối",
+      "error": "Lỗi kết nối"
+    },
+    "retry": "Thử lại",
+    "interactKey": "E",
+    "minimap": "Bản đồ {zone}",
+    "you": "Bạn",
+    "places": "Địa điểm",
+    "travel": "Đi",
+    "current": "Bạn đang ở đây",
+    "emotes": "Biểu cảm",
+    "settings": "Cài đặt",
+    "close": "Đóng",
+    "signOut": "Đăng xuất",
+    "quality": "Chất lượng đồ họa",
+    "qualityAuto": "Tự động",
+    "qualityHigh": "Cao",
+    "qualityLow": "Tiết kiệm pin",
+    "showStats": "Hiện thông số hiệu năng",
+    "moveButtons": "Hiện nút di chuyển",
+    "sprintToggle": "Luôn chạy",
+    "controlsDesktop": "WASD / phím mũi tên để đi · Shift để chạy · kéo để xoay · E để tương tác",
+    "controlsMobile": "Cần điều khiển để đi (đẩy ra mép để chạy) · nút E để tương tác",
+    "move": {
+      "up": "Đi tới",
+      "down": "Đi lùi",
+      "left": "Sang trái",
+      "right": "Sang phải"
+    },
+    "joystick": "Cần điều khiển di chuyển",
+    "stats": "{fps} FPS · {calls} lệnh vẽ · {memory}",
+    "chat": {
+      "title": "Trò chuyện",
+      "placeholder": "Nói điều gì đó dễ thương…",
+      "send": "Gửi",
+      "hide": "Ẩn chat",
+      "show": "Chat",
+      "kidsOff": "Chat công khai tắt cho người chơi dưới 13 tuổi.",
+      "off": "Chat đang tắt trong cài đặt của bạn.",
+      "block": "Chặn",
+      "report": "Báo cáo",
+      "blocked": "Đã chặn {name}.",
+      "reported": "Cảm ơn — đội ngũ sẽ xem xét.",
+      "empty": "Chưa có tin nhắn. Chào mọi người nhé! 👋",
+      "reportTitle": "Báo cáo {name}",
+      "reportReason": "Lý do",
+      "reportSend": "Gửi báo cáo"
+    },
+    "reasons": {
+      "harassment": "Quấy rối",
+      "hate": "Thù ghét",
+      "sexual": "Nội dung tình dục",
+      "spam": "Spam",
+      "self_harm": "Tự làm hại",
+      "violence": "Bạo lực",
+      "other": "Khác"
+    },
+    "portal": {
+      "birthday_house": "Vào Ngôi nhà Sinh nhật",
+      "garden_terrace": "Đến Sân vườn",
+      "central_plaza": "Về Quảng trường Trung tâm"
+    },
+    "interact": {
+      "fountain": "Ngắm đài phun nước",
+      "read_sign": "Đọc biển chỉ dẫn",
+      "gazebo": "Nghỉ ở chòi"
+    },
+    "message": {
+      "fountain": "Đài phun nước lấp lánh. Hãy ước một điều! ✨",
+      "sign_birthday_house": "Ngôi nhà Sinh nhật — tổ chức hoặc tham gia tiệc sinh nhật riêng tư.",
+      "sign_garden": "Sân vườn → Khu vườn yên tĩnh để tụ tập.",
+      "gazebo": "Góc ấm cúng để trò chuyện cùng bạn bè."
+    },
+    "expansion": {
+      "market": "Sắp ra mắt: Khu chợ",
+      "stage": "Sắp ra mắt: Sân khấu"
+    },
+    "house": {
+      "title": "Ngôi nhà Sinh nhật 🎂",
+      "body": "Tiệc sinh nhật là riêng tư. Hãy tự tạo tiệc, hoặc tham gia bằng link mời hay mã phòng.",
+      "create": "Tạo tiệc sinh nhật",
+      "join": "Tham gia tiệc có sẵn",
+      "back": "Quay lại Quảng trường"
+    },
+    "backToPlaza": "Về Quảng trường",
+    "errors": {
+      "too_far": "Hãy lại gần hơn một chút.",
+      "rate_limited": "Chậm lại một chút nhé 🙂",
+      "chat_disabled": "Chat đang tắt cho tài khoản của bạn.",
+      "chat_filtered": "Tin nhắn chưa được gửi. Hãy nói lời tử tế nhé.",
+      "invalid_payload": "Không thực hiện được.",
+      "connect_failed": "Không kết nối được máy chủ thế giới.",
+      "zone_not_found": "Nơi này chưa mở.",
+      "forbidden": "Bạn không thể đến đó.",
+      "profile_incomplete": "Hãy tạo nhân vật trước.",
+      "unauthenticated": "Vui lòng đăng nhập lại.",
+      "network": "Không kết nối được HAPPYROOM.",
+      "enter_failed": "Không vào được nơi đó.",
+      "replaced": "Bạn đã mở thế giới ở một tab khác.",
+      "banned": "Tài khoản này không thể vào thế giới.",
+      "not_configured": "Máy chủ thế giới chưa được cấu hình."
+    }
+  },
+  "nav2": {
+    "world": "Thế giới"
+  }
+}

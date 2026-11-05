@@ -1,0 +1,21 @@
+# Supabase CLI configuration (https://supabase.com/docs/guides/local-development/cli/config).
+# Only the settings HAPPYROOM depends on are listed; CLI defaults apply to everything else.
+project_id = "happyroom"
+
+[db]
+major_version = 17
+
+[db.seed]
+enabled = true
+sql_paths = ["./seeds/*.sql"]
+
+[auth]
+enabled = true
+site_url = "http://localhost:3000"
+additional_redirect_urls = ["http://localhost:3000/auth/callback"]
+# Guests never need an account; registered login is optional.
+enable_signup = true
+
+[auth.email]
+enable_signup = true
+enable_confirmations = true

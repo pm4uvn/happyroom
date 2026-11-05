@@ -1,0 +1,17 @@
+{
+  "name": "@happyroom/integration-tests",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test:integration": "vitest run --config vitest.config.ts",
+    "lint": "eslint integration",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@happyroom/shared": "workspace:*",
+    "@types/node": "24.19.2",
+    "postgres": "3.4.9",
+    "vitest": "4.1.12"
+  }
+}
