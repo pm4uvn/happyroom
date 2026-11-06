@@ -11,6 +11,8 @@ export interface Country {
   subregion: string;
   lat: number;
   lng: number;
+  /** Natural Earth label-priority rank: 2 = major/populous country, 7 = tiny territory. */
+  labelRank: number;
 }
 
 export const REGIONS = ["Africa", "Americas", "Asia", "Europe", "Oceania", "Antarctica"] as const;

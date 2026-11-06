@@ -28,7 +28,9 @@ test.describe("explore dashboard (landing)", () => {
 
   test("is honest when no celebration is public: empty state, no fake rooms", async ({ page, request }) => {
     const api = await (await request.get("/api/explore/celebrations")).json();
-    expect(api).toMatchObject({ mode: "live", discoveryEnabled: false, celebrations: [] });
+    // Host opt-in to public discovery exists (discoveryEnabled: true) but nobody has used it on
+    // this fresh E2E database, so the live listing is honestly empty — never fabricated rooms.
+    expect(api).toMatchObject({ mode: "live", discoveryEnabled: true, celebrations: [] });
 
     await page.goto("/");
     await expect(page.getByTestId("explore-empty")).toBeVisible();

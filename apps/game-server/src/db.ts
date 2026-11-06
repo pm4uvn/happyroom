@@ -43,12 +43,20 @@ export interface RoomRow {
   capacity: number;
   expires_at: Date;
   host_participant_id: string | null;
+  discoverable: boolean;
+  public_name: string | null;
+  public_country: string | null;
+  public_intro: string | null;
+  accept_wishes: boolean;
+  show_participant_count: boolean;
 }
 
 export async function loadRoom(roomId: string): Promise<RoomRow | null> {
   const rows = await db()<RoomRow[]>`
     select r.id, r.slug, r.title, r.honoree_name, r.theme_id, r.cake_style, r.decoration, r.status,
            r.locked, r.gifts_enabled, r.capacity, r.expires_at,
+           r.discoverable, r.public_name, r.public_country, r.public_intro,
+           r.accept_wishes, r.show_participant_count,
            (select p.id from room_participants p where p.room_id = r.id and p.role = 'host') as host_participant_id
       from rooms r
      where r.id = ${roomId} and r.deleted_at is null`;

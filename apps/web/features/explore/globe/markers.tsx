@@ -6,14 +6,14 @@ import * as THREE from "three";
 import type { Cluster } from "../model";
 import { latLngToXYZ } from "./geo";
 import { GLOBE_COLORS, TYPE_COLORS } from "./palette";
+import { FACING_LIMIT, limbFade, projectLatLng } from "./project";
 
 export interface MarkerHandlers {
   onHover: (cluster: Cluster | null) => void;
   onPick: (cluster: Cluster) => void;
 }
 
-/** A marker is only interactive while it faces the camera. */
-export const FACING_LIMIT = 0.12;
+export { FACING_LIMIT };
 
 const Z = new THREE.Vector3(0, 0, 1);
 const countTextures = new Map<number, THREE.CanvasTexture>();
@@ -130,7 +130,7 @@ function Marker({
     const k = d * 0.03 * base * emphasis * Math.min(1, 0.4 + camDist * 0.2);
     g.scale.setScalar(k);
     // Fade towards the limb.
-    const fade = THREE.MathUtils.clamp((dot - 0.02) / 0.25, 0, 1);
+    const fade = limbFade(dot);
     g.children.forEach((child) => {
       const mat = (child as THREE.Mesh).material as THREE.Material & {
         opacity: number;
@@ -210,10 +210,5 @@ export function projectCluster(
   size: { width: number; height: number },
   scratch: THREE.Vector3,
 ): { x: number; y: number } | null {
-  const [x, y, z] = latLngToXYZ(cluster.lat, cluster.lng, 1.01);
-  scratch.set(x, y, z);
-  const facing = scratch.clone().normalize().dot(camera.position.clone().normalize());
-  if (facing <= FACING_LIMIT) return null;
-  scratch.project(camera);
-  return { x: ((scratch.x + 1) / 2) * size.width, y: ((1 - scratch.y) / 2) * size.height };
+  return projectLatLng(cluster.lat, cluster.lng, camera, size, scratch);
 }

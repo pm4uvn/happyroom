@@ -60,3 +60,32 @@ export function sanitizeMultiLine(value: string): string {
     .join("\n")
     .trim();
 }
+
+/**
+ * Light profanity screen for public user-generated text (chat, public wishes). Intentionally
+ * conservative — it is a floor, not full moderation — and runs server-side before anything is
+ * broadcast or stored as publicly visible.
+ */
+const PROFANITY_BLOCKLIST = [
+  "fuck",
+  "shit",
+  "bitch",
+  "cunt",
+  "nigger",
+  "faggot",
+  "đụ",
+  "địt",
+  "lồn",
+  "cặc",
+  "死ね",
+];
+export function screenProfanity(text: string): { ok: true; text: string } | { ok: false } {
+  const lower = text.normalize("NFC").toLowerCase();
+  if (PROFANITY_BLOCKLIST.some((w) => lower.includes(w))) return { ok: false };
+  return { ok: true, text };
+}
+
+/** Rejects text containing a URL or a bare domain-looking token (public UGC must carry no links). */
+export function containsLink(text: string): boolean {
+  return /https?:\/\/|www\.|\b[a-z0-9-]+\.(com|net|org|io|co|vn|jp|me|link|xyz|info)\b/i.test(text);
+}

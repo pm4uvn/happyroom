@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { DoorOpen, PartyPopper, X } from "lucide-react";
+import { HeartHandshake, PartyPopper, X } from "lucide-react";
 import { ctaClass } from "./cta-class";
 import { TYPE_COLORS } from "./globe/palette";
 import type { CelebrationLabels } from "./labels";
@@ -18,11 +18,13 @@ export function RoomPreview({
   demo,
   labels,
   onClose,
+  onSendWish,
 }: {
   item: PublicCelebration;
   demo: boolean;
   labels: CelebrationLabels;
   onClose: () => void;
+  onSendWish: (item: PublicCelebration) => void;
 }) {
   const t = useTranslations("explore");
   const rows: [string, string][] = [
@@ -67,8 +69,13 @@ export function RoomPreview({
           </div>
         )}
       </dl>
+      {item.intro && <p className="mt-3 text-sm italic leading-relaxed text-white/90">“{item.intro}”</p>}
       <p className="mt-4 text-sm leading-relaxed text-night-muted">
-        {demo ? t("detail.demoHint") : t("detail.inviteHint")}
+        {demo
+          ? t("detail.demoHint")
+          : item.acceptingWishes
+            ? t("detail.wishHint")
+            : t("detail.wishesOffHint")}
       </p>
       <div className="mt-4 flex flex-wrap gap-2">
         {demo ? (
@@ -84,11 +91,24 @@ export function RoomPreview({
             </Link>
           </>
         ) : (
-          <Link href="/join" className={ctaClass("primary")} data-testid="preview-join">
-            <DoorOpen aria-hidden className="size-4" /> {t("cta.join")}
-          </Link>
+          <>
+            {item.acceptingWishes && (
+              <button
+                type="button"
+                onClick={() => onSendWish(item)}
+                className={ctaClass("primary")}
+                data-testid="preview-send-wish"
+              >
+                <HeartHandshake aria-hidden className="size-4" /> {t("detail.sendWish")}
+              </button>
+            )}
+            <Link href="/create" className={ctaClass("secondary")} data-testid="preview-create-own">
+              <PartyPopper aria-hidden className="size-4" /> {t("detail.createOwn")}
+            </Link>
+          </>
         )}
       </div>
+      <p className="mt-2 text-xs text-night-muted/80">{t("detail.inviteHint")}</p>
     </section>
   );
 }

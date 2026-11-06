@@ -419,6 +419,23 @@
       "idle": "Bạn bị ngắt kết nối vì không hoạt động.",
       "connect_failed": "Không kết nối được máy chủ bữa tiệc.",
       "grant_failed": "Không lấy được quyền vào bữa tiệc này."
+    },
+    "discovery": {
+      "title": "Trang khám phá",
+      "statusOn": "Công khai",
+      "statusOff": "Riêng tư",
+      "enableLabel": "Hiển thị buổi ăn mừng của tôi trên trang khám phá",
+      "enableHint": "Mặc định tắt. Chỉ hiển thị những gì bạn điền bên dưới — không bao giờ gồm link mời, mã truy cập hay danh sách khách.",
+      "nameLabel": "Tên công khai",
+      "countryLabel": "Quốc gia",
+      "countryPlaceholder": "Chọn quốc gia",
+      "introLabel": "Giới thiệu ngắn (không bắt buộc)",
+      "acceptWishesLabel": "Nhận lời chúc mừng từ khách ghé thăm",
+      "showCountLabel": "Hiển thị số người đang tham gia",
+      "requiresFields": "Hãy điền tên công khai và quốc gia để công khai buổi ăn mừng.",
+      "save": "Lưu",
+      "savedOn": "Buổi ăn mừng của bạn hiện đã xuất hiện trên trang khám phá.",
+      "savedOff": "Buổi ăn mừng của bạn không còn công khai."
     }
   },
   "auth": {
@@ -657,7 +674,7 @@
       "errorBody": "Kiểm tra kết nối mạng rồi thử lại.",
       "retry": "Thử lại",
       "emptyTitle": "Chưa có buổi ăn mừng công khai",
-      "emptyBody": "Các phòng HAPPYROOM mặc định là riêng tư và không được liệt kê, và tính năng công khai chưa mở — vì vậy bản đồ để trống thay vì hiển thị phòng giả.",
+      "emptyBody": "Chưa có chủ phòng nào chọn công khai buổi ăn mừng. Các phòng mặc định riêng tư và không được liệt kê trừ khi chủ phòng chọn công khai.",
       "noMatchTitle": "Không có kết quả phù hợp",
       "noMatchBody": "Hãy thử khu vực, ngôn ngữ hoặc loại sự kiện khác."
     },
@@ -673,7 +690,9 @@
       "reset": "Đặt lại góc nhìn",
       "geoError": "Không tải được đường bờ biển. Các điểm đánh dấu vẫn hoạt động.",
       "cluster": "{count} buổi ăn mừng",
-      "more": "+{count} buổi khác"
+      "more": "+{count} buổi khác",
+      "countryNamesOn": "Hiện tên quốc gia",
+      "countryNamesOff": "Ẩn tên quốc gia"
     },
     "detail": {
       "close": "Đóng",
@@ -687,7 +706,10 @@
       "createOwn": "Tạo phòng của bạn",
       "demoJoin": "Không thể tham gia phòng demo",
       "clusterTitle": "{count} buổi ăn mừng tại đây",
-      "view": "Xem"
+      "view": "Xem",
+      "sendWish": "Gửi lời chúc mừng",
+      "wishHint": "Chủ phòng đang nhận lời chúc mừng từ khách ghé thăm.",
+      "wishesOffHint": "Chủ phòng hiện không nhận lời chúc."
     },
     "steps": {
       "title": "Tạo → Chia sẻ → Ăn mừng",
@@ -725,6 +747,55 @@
       "title": "Đưa buổi ăn mừng của bạn lên bản đồ",
       "subtitle": "Một phòng 3D ấm cúng, một đường link, mọi người cùng nhau."
     },
-    "credit": "Dữ liệu bản đồ: Natural Earth (phạm vi công cộng)"
+    "credit": "Dữ liệu bản đồ: Natural Earth (phạm vi công cộng)",
+    "summary": {
+      "groupLabel": "Hoạt động ăn mừng ngay lúc này",
+      "celebratingNow": {
+        "label": "Đang diễn ra"
+      },
+      "peopleCelebrating": {
+        "label": "Người đang ăn mừng"
+      },
+      "countriesCelebrating": {
+        "label": "Quốc gia đang ăn mừng"
+      },
+      "wishesShared": {
+        "label": "Lời chúc đã gửi"
+      },
+      "unavailable": "Chưa có dữ liệu",
+      "unavailableHint": "Không lấy được số liệu trực tiếp lúc này. Hãy thử lại sau.",
+      "allZeroHint": "Hiện chưa có buổi ăn mừng công khai nào đang diễn ra.",
+      "allZeroCta": "Bắt đầu một buổi"
+    },
+    "wish": {
+      "title": "Gửi lời chúc mừng",
+      "close": "Đóng",
+      "nameLabel": "Tên của bạn",
+      "namePlaceholder": "Tên của bạn",
+      "bodyLabel": "Lời nhắn",
+      "bodyPlaceholder": "Viết một lời nhắn ngắn…",
+      "templates": {
+        "t1": "Chúc bạn một buổi ăn mừng thật vui! 🎉",
+        "t2": "Chúc bạn một ngày thật tuyệt vời!",
+        "t3": "Chúc mừng từ phương xa! 💛",
+        "t4": "Gửi yêu thương và những lời chúc tốt đẹp!",
+        "t5": "Mong rằng đây sẽ là một ngày thật tuyệt!"
+      },
+      "send": "Gửi lời chúc mừng",
+      "sending": "Đang gửi…",
+      "successTitle": "Đã gửi! Chủ phòng sẽ xem xét lời chúc này",
+      "successBody": "Hãy mang lại niềm vui cho ai đó. Tạo buổi ăn mừng của riêng bạn.",
+      "successCta": "Tạo buổi ăn mừng",
+      "errors": {
+        "not_found": "Không tìm thấy buổi ăn mừng này.",
+        "wishes_disabled": "Chủ phòng hiện không nhận lời chúc.",
+        "ended": "Buổi ăn mừng này đã kết thúc.",
+        "validation_failed": "Vui lòng kiểm tra lại tên và lời nhắn.",
+        "rate_limited": "Bạn gửi quá nhiều lời chúc — hãy thử lại sau vài phút.",
+        "blocked_content": "Không thể gửi lời nhắn này: vui lòng không chèn đường link.",
+        "network": "Không gửi được — kiểm tra kết nối rồi thử lại.",
+        "generic": "Không gửi được. Vui lòng thử lại."
+      }
+    }
   }
 }

@@ -2,7 +2,7 @@ import { z } from "zod";
 import type { CEREMONY_PHASES } from "./enums.js";
 import { EMOTE_IDS, GIFT_CATALOG_IDS } from "./enums.js";
 import { LIMITS } from "./limits.js";
-import { multiLineText, optionalMultiLineText, singleLineText } from "./schemas.js";
+import { multiLineText, optionalMultiLineText, optionalSingleLineText, singleLineText } from "./schemas.js";
 
 /**
  * Realtime protocol between browser clients and the authoritative game server.
@@ -53,6 +53,21 @@ export const clientMessageSchemas = {
   hostLock: z.object({ locked: z.boolean() }),
   hostGifts: z.object({ enabled: z.boolean() }),
   hostRemoveMessage: z.object({ messageId: z.string().min(1).max(64) }),
+  /**
+   * Opt in/out of the public Explore dashboard. `publicName`/`publicCountry` are required when
+   * `discoverable` is true (enforced again on the server; never derived from `title`/IP/location).
+   */
+  hostDiscovery: z.object({
+    discoverable: z.boolean(),
+    publicName: optionalSingleLineText(LIMITS.publicNameMaxChars),
+    publicCountry: z
+      .string()
+      .regex(/^[A-Z]{2}$/)
+      .optional(),
+    publicIntro: optionalMultiLineText(LIMITS.publicIntroMaxChars),
+    acceptWishes: z.boolean(),
+    showParticipantCount: z.boolean(),
+  }),
   ping: z.object({ t: finiteNumber }),
 } as const;
 

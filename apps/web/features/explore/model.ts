@@ -14,11 +14,20 @@ export const publicCelebrationSchema = z.object({
   celebrationType: z.enum(EVENT_TYPES),
   countryCode: z.string().regex(/^[A-Z]{2}$/),
   language: z.enum(SUPPORTED_LOCALES),
+  /**
+   * "live" means a real person is connected right now (game-server presence), not merely that
+   * the database row's status says so — a host who opened a room and never returned is not
+   * "happening now".
+   */
   status: z.enum(["live", "upcoming"]),
   startsAt: z.iso.datetime().nullable(),
-  /** Only real, server-counted values. Null when unknown — never estimated. */
+  /** Only real, server-counted values. Null when unknown or the host keeps it private. */
   participantCount: z.number().int().min(0).nullable(),
   capacity: z.number().int().min(1).nullable(),
+  /** Host-written public blurb (separate from any private room content). */
+  intro: z.string().max(280).nullable(),
+  /** Whether this celebration currently accepts "Send congratulations" from visitors. */
+  acceptingWishes: z.boolean(),
 });
 export type PublicCelebration = z.infer<typeof publicCelebrationSchema>;
 
@@ -29,8 +38,46 @@ export const discoveryResponseSchema = z.object({
   discoveryEnabled: z.boolean(),
   demoAvailable: z.boolean(),
   celebrations: z.array(publicCelebrationSchema).max(500),
+  /**
+   * False when the game server's presence snapshot could not be read: some genuinely live
+   * celebrations may then be missing or mislabelled "upcoming" rather than invented as "live".
+   */
+  presenceAvailable: z.boolean(),
 });
 export type DiscoveryResponse = z.infer<typeof discoveryResponseSchema>;
+
+/** One honest-by-construction summary number: either a real count, or "we don't know right now". */
+export const summaryMetricSchema = z.object({
+  value: z.number().int().min(0).nullable(),
+  status: z.enum(["ok", "unavailable"]),
+});
+export type SummaryMetric = z.infer<typeof summaryMetricSchema>;
+
+export const exploreSummarySchema = z.object({
+  mode: z.enum(["live", "demo"]),
+  celebratingNow: summaryMetricSchema,
+  peopleCelebrating: summaryMetricSchema,
+  countriesCelebrating: summaryMetricSchema,
+  wishesShared: summaryMetricSchema,
+  updatedAt: z.iso.datetime(),
+});
+export type ExploreSummary = z.infer<typeof exploreSummarySchema>;
+
+export const sendPublicWishResultSchema = z.discriminatedUnion("ok", [
+  z.object({ ok: z.literal(true), status: z.literal("pending") }),
+  z.object({
+    ok: z.literal(false),
+    error: z.enum([
+      "not_found",
+      "wishes_disabled",
+      "ended",
+      "validation_failed",
+      "rate_limited",
+      "blocked_content",
+    ]),
+  }),
+]);
+export type SendPublicWishResult = z.infer<typeof sendPublicWishResultSchema>;
 
 export interface ExploreFilters {
   query: string;

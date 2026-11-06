@@ -8,12 +8,16 @@
  * Re-running is idempotent; a world_versions row is added whenever the combined content changes.
  */
 import { createHash } from "node:crypto";
+import { existsSync } from "node:fs";
 import { readFile, readdir } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import postgres from "postgres";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+// Same root .env the web app, game server and db-migrate.mjs already load.
+const rootEnv = path.join(root, ".env");
+if (existsSync(rootEnv)) process.loadEnvFile(rootEnv);
 const { parseZoneDefinition, buildZoneCollision, reachable } = await import(
   new URL("../packages/world/dist/index.js", import.meta.url).href
 );

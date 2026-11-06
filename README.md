@@ -6,7 +6,7 @@
 
 ## Explore dashboard (landing)
 
-The home page is a 3D globe of **public** celebrations with search and filters. No room is public yet (public discovery needs a host opt-in that does not exist), so it shows an honest empty state; `/?demo=1` previews clearly labelled demo celebrations (dev only, or `EXPLORE_DEMO_ENABLED=true`). Details, privacy rules and what is missing: [docs/EXPLORE.md](docs/EXPLORE.md).
+The home page is a 3D globe of **public** celebrations, with real-time summary cards, search/filters, and "Send congratulations" for visitors — all opt-in. A room appears only after its host turns on public discovery from inside the party room (name + country, separate from the private title); "live" requires confirmed game-server presence, not just a database flag. Nothing is public until a host opts in, so on a fresh database the dashboard shows an honest empty state; `/?demo=1` previews clearly labelled demo celebrations (dev only, or `EXPLORE_DEMO_ENABLED=true`). Full details, exact metric definitions and known gaps: [docs/EXPLORE.md](docs/EXPLORE.md).
 
 ## HAPPYROOM World (new)
 
@@ -60,7 +60,7 @@ The web app and game server both read the **root** `.env` (the web app also hono
 | Landing page, i18n en/vi/ja, analytics ingestion, health, security headers                                        | E2E                                                                                      |
 | Blender GLB loader + node classifier (collision, spawns, interactables)                                           | unit tests; **real GLB not supplied yet** — see [docs/ASSETS_GLB.md](docs/ASSETS_GLB.md) |
 
-Latest local results (2026-11-05): **136 unit**, **47 integration** (19 database + 28 game server incl. 11 world-zone), **E2E**: landing + party + world suites green (desktop + mobile; world 11/11). Lint, typecheck and production build pass. Note: run E2E with no other Playwright/agent sessions using the same folder — they share `test-results/` and CPU (`E2E_WORKERS=1` for slow machines).
+Latest local results (2026-11-06): **155 unit**, **57 integration** (24 database + 33 game server incl. 11 world-zone + host-discovery/presence), **E2E**: landing + party + world + explore-live suites green (desktop + mobile). Lint, typecheck and production build pass. Note: run E2E with no other Playwright/agent sessions using the same folder — they share `test-results/` and CPU (`E2E_WORKERS=1` for slow machines).
 
 ## Verify
 

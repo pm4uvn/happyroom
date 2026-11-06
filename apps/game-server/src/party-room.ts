@@ -65,6 +65,9 @@ export function configurePartyRoom(opts: { grantKey: string }) {
 
 export class PartyRoom extends Room<{ state: PartyState }> {
   private dbRoomId = "";
+  // Public wishes arrive over HTTP (apps/web), not through this room's own "wish" message, so
+  // moderators only learn about them via sendPendingWishes() on join unless we poll for new ones.
+  private lastPublicWishCheck = new Date(0);
   private sessions = new Map<string, Session>(); // sessionId → session
   private ceremony: CeremonyState = createCeremonyState(Date.now());
   private ceremonyRowId: string | null = null;
@@ -107,6 +110,12 @@ export class PartyRoom extends Room<{ state: PartyState }> {
     state.locked = row.locked;
     state.giftsEnabled = row.gifts_enabled;
     state.capacity = row.capacity;
+    state.discoverable = row.discoverable;
+    state.publicName = row.public_name ?? "";
+    state.publicCountry = row.public_country ?? "";
+    state.publicIntro = row.public_intro ?? "";
+    state.acceptWishes = row.accept_wishes;
+    state.showParticipantCount = row.show_participant_count;
     state.ceremony = new Ceremony();
     this.setState(state);
     this.syncCeremony();
@@ -145,6 +154,8 @@ export class PartyRoom extends Room<{ state: PartyState }> {
 
     this.registerMessages();
     this.clock.setInterval(() => this.tick(), 100);
+    this.lastPublicWishCheck = new Date();
+    this.clock.setInterval(() => void this.pollPublicWishes(), 5000);
     log.info("room created", { roomId: row.id });
   }
 
@@ -524,6 +535,34 @@ export class PartyRoom extends Room<{ state: PartyState }> {
       await db()`update rooms set gifts_enabled = ${msg.enabled} where id = ${this.dbRoomId}`;
       this.state.giftsEnabled = msg.enabled;
     });
+
+    this.on("hostDiscovery", async (client, s, msg) => {
+      if (!this.allow(client, s, "room.discovery")) return;
+      if (msg.discoverable && (!msg.publicName || !msg.publicCountry)) {
+        return this.fail(client, "hostDiscovery", "invalid_payload");
+      }
+      const [row] = await db()`
+        update rooms set
+          discoverable = ${msg.discoverable},
+          public_name = ${msg.discoverable ? msg.publicName! : null},
+          public_country = ${msg.discoverable ? msg.publicCountry! : null},
+          public_intro = ${msg.discoverable ? (msg.publicIntro ?? null) : null},
+          accept_wishes = ${msg.acceptWishes},
+          show_participant_count = ${msg.showParticipantCount}
+         where id = ${this.dbRoomId}
+         returning discoverable, public_name, public_country, public_intro, accept_wishes, show_participant_count`;
+      if (!row) return;
+      this.state.discoverable = row.discoverable;
+      this.state.publicName = row.public_name ?? "";
+      this.state.publicCountry = row.public_country ?? "";
+      this.state.publicIntro = row.public_intro ?? "";
+      this.state.acceptWishes = row.accept_wishes;
+      this.state.showParticipantCount = row.show_participant_count;
+      client.send("hostDiscoverySaved", { discoverable: row.discoverable });
+      void recordAnalytics(row.discoverable ? "explore_opt_in" : "explore_opt_out", this.dbRoomId, {
+        roomId: this.dbRoomId,
+      });
+    });
   }
 
   // ---------------------------------------------------------------------------
@@ -641,6 +680,29 @@ export class PartyRoom extends Room<{ state: PartyState }> {
         createdAt: w.created_at.getTime(),
       })),
     );
+  }
+
+  /** Picks up wishes sent from the Explore dashboard (apps/web) while this room is already live. */
+  private async pollPublicWishes() {
+    if (!this.state.discoverable) return;
+    try {
+      const rows = await db()`
+        select id, author_display_name, body, created_at from wishes
+         where room_id = ${this.dbRoomId} and status = 'pending' and source = 'public'
+           and deleted_at is null and created_at > ${this.lastPublicWishCheck}
+         order by created_at asc limit 50`;
+      for (const w of rows) {
+        this.notifyModerators("wishPending", {
+          id: w.id,
+          author: w.author_display_name,
+          body: w.body,
+          createdAt: w.created_at.getTime(),
+        });
+        if (w.created_at > this.lastPublicWishCheck) this.lastPublicWishCheck = w.created_at;
+      }
+    } catch (err) {
+      log.error("public wish poll failed", { err });
+    }
   }
 
   private async touchParticipant(participantId: string) {

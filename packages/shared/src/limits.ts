@@ -5,6 +5,10 @@ export const LIMITS = {
   roomTitleMaxChars: 60,
   chatMessageMaxChars: 280,
   wishMaxChars: 500,
+  /** Shorter cap for wishes sent from the public Explore dashboard (not the 3D room). */
+  publicWishMaxChars: 220,
+  publicNameMaxChars: 80,
+  publicIntroMaxChars: 280,
   giftMessageMaxChars: 200,
   accessCodeMinChars: 4,
   accessCodeMaxChars: 12,
@@ -25,6 +29,9 @@ export const RATE_LIMITS = {
   roomCreate: { points: 5, windowSeconds: 60 * 60 },
   chatMessage: { points: 8, windowSeconds: 10 },
   wish: { points: 3, windowSeconds: 60 },
+  /** Per-IP; a visitor's guest-session row also keeps a per-room idempotency key. */
+  publicWish: { points: 5, windowSeconds: 600 },
+  exploreSummary: { points: 120, windowSeconds: 60 },
   gift: { points: 6, windowSeconds: 60 },
   invitationCreate: { points: 20, windowSeconds: 60 * 60 },
   emote: { points: 10, windowSeconds: 5 },

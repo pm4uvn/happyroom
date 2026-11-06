@@ -3,13 +3,49 @@
 import dynamic from "next/dynamic";
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { useTranslations } from "next-intl";
-import { Globe2, Loader2, Minus, MoveHorizontal, Plus, RotateCcw } from "lucide-react";
+import { Globe2, Loader2, Minus, MoveHorizontal, Plus, RotateCcw, Tag } from "lucide-react";
 import { cn } from "@happyroom/ui";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import { detectQualityTier, probeGpu, type QualityTier } from "@/features/room-scene/capabilities";
 import type { FocusTarget, ZoomCommand } from "./globe/camera-rig";
+import { CountryLabelsOverlay, createLabelRegistry } from "./globe/country-labels";
 import type { CelebrationLabels } from "./labels";
 import type { Cluster, PublicCelebration } from "./model";
+
+const COUNTRY_LABELS_STORAGE_KEY = "hr_explore_country_labels";
+
+/**
+ * Tiny external store for the "show country names" preference: read lazily on first subscribe
+ * (client-only, so the server and the client's first render both see the same default — "on" —
+ * with no hydration mismatch), then kept in sync across any component reading it.
+ */
+let countryLabelsPref = true;
+let countryLabelsInitialized = false;
+const countryLabelsListeners = new Set<() => void>();
+
+function subscribeCountryLabelsPref(onChange: () => void) {
+  if (!countryLabelsInitialized) {
+    countryLabelsInitialized = true;
+    try {
+      countryLabelsPref = window.localStorage.getItem(COUNTRY_LABELS_STORAGE_KEY) !== "off";
+    } catch {
+      /* per-viewer convenience only; default stands */
+    }
+  }
+  countryLabelsListeners.add(onChange);
+  return () => countryLabelsListeners.delete(onChange);
+}
+const getCountryLabelsPref = () => countryLabelsPref;
+const getServerCountryLabelsPref = () => true;
+function setCountryLabelsPref(next: boolean) {
+  countryLabelsPref = next;
+  try {
+    window.localStorage.setItem(COUNTRY_LABELS_STORAGE_KEY, next ? "on" : "off");
+  } catch {
+    /* per-viewer convenience only */
+  }
+  for (const listener of countryLabelsListeners) listener();
+}
 
 // three.js + R3F are downloaded only on the client, after the server-rendered page is usable.
 const GlobeCanvas = dynamic(() => import("./globe/globe-canvas"), { ssr: false });
@@ -57,7 +93,9 @@ export function GlobeStage({
   focus,
   demo,
   labels,
+  selectedCountry,
   onPick,
+  onSelectCountry,
   onReset,
   children,
 }: {
@@ -66,7 +104,11 @@ export function GlobeStage({
   focus: FocusTarget | null;
   demo: boolean;
   labels: CelebrationLabels;
+  /** Country code from the active filter ("" when none), so its label can be highlighted. */
+  selectedCountry: string;
   onPick: (cluster: Cluster) => void;
+  /** Clicking a country's name label: sync the filter, fly there and update the room list. */
+  onSelectCountry: (code: string) => void;
   onReset: () => void;
   /** Overlay (selected celebration details). */
   children?: React.ReactNode;
@@ -81,9 +123,16 @@ export function GlobeStage({
   const [geoError, setGeoError] = useState(false);
   const [hovered, setHovered] = useState<Cluster | null>(null);
   const [zoom, setZoom] = useState<ZoomCommand | null>(null);
+  const showCountryLabels = useSyncExternalStore(
+    subscribeCountryLabelsPref,
+    getCountryLabelsPref,
+    getServerCountryLabelsPref,
+  );
+  const [countryLabelsRegistry] = useState(createLabelRegistry);
   const onReady = useCallback(() => setReady(true), []);
   const onGeoError = useCallback(() => setGeoError(true), []);
   const onHover = useCallback((c: Cluster | null) => setHovered(c), []);
+  const toggleCountryLabels = useCallback(() => setCountryLabelsPref(!countryLabelsPref), []);
 
   const showCanvas = support?.webgl === true;
   const unsupported = support !== null && !support.webgl;
@@ -115,8 +164,21 @@ export function GlobeStage({
             onPick={onPick}
             onReady={onReady}
             onGeoError={onGeoError}
+            countryLabelsRegistry={countryLabelsRegistry}
+            showCountryLabels={showCountryLabels}
+            selectedCountry={selectedCountry}
+            narrow={support.narrow}
           />
         </div>
+      )}
+
+      {showCanvas && (
+        <CountryLabelsOverlay
+          registry={countryLabelsRegistry}
+          selectedCountry={selectedCountry}
+          countryName={labels.country}
+          onSelect={onSelectCountry}
+        />
       )}
 
       {/* Hover preview, positioned per frame by the canvas. */}
@@ -167,6 +229,14 @@ export function GlobeStage({
           </IconButton>
           <IconButton label={t("globe.reset")} onClick={onReset}>
             <RotateCcw aria-hidden className="size-4" />
+          </IconButton>
+          <IconButton
+            label={showCountryLabels ? t("globe.countryNamesOff") : t("globe.countryNamesOn")}
+            onClick={toggleCountryLabels}
+            pressed={showCountryLabels}
+            testId="toggle-country-labels"
+          >
+            <Tag aria-hidden className="size-4" />
           </IconButton>
         </div>
       )}
@@ -259,10 +329,14 @@ function HoverCard({
 function IconButton({
   label,
   onClick,
+  pressed,
+  testId,
   children,
 }: {
   label: string;
   onClick: () => void;
+  pressed?: boolean;
+  testId?: string;
   children: React.ReactNode;
 }) {
   return (
@@ -270,8 +344,15 @@ function IconButton({
       type="button"
       onClick={onClick}
       aria-label={label}
+      aria-pressed={pressed}
       title={label}
-      className="grid size-10 place-items-center rounded-full bg-midnight-900/80 text-white ring-1 ring-white/15 backdrop-blur transition-colors hover:bg-midnight-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan"
+      data-testid={testId}
+      className={cn(
+        "grid size-10 place-items-center rounded-full ring-1 backdrop-blur transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan",
+        pressed === false
+          ? "bg-midnight-900/50 text-night-muted ring-white/10 hover:bg-midnight-700"
+          : "bg-midnight-900/80 text-white ring-white/15 hover:bg-midnight-700",
+      )}
     >
       {children}
     </button>

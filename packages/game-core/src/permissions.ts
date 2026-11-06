@@ -20,6 +20,7 @@ export type RoomAction =
   | "moderation.removeMessage"
   | "room.lock"
   | "room.toggleGifts"
+  | "room.discovery"
   | "media.upload"
   | "media.moderate"
   | "invite.create";
@@ -61,6 +62,7 @@ const HOST_ONLY_ACTIONS = new Set<RoomAction>([
   "gift.open",
   "room.lock",
   "room.toggleGifts",
+  "room.discovery",
   "invite.create",
 ]);
 

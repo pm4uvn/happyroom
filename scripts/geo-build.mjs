@@ -11,7 +11,7 @@
  *
  * Outputs (committed):
  *   apps/web/public/geo/{land,borders}-{50m,110m}.json   delta-encoded rings/lines, 0.01° units
- *   apps/web/features/explore/data/countries.json       ISO 3166-1 alpha-2, UN region, label point
+ *   apps/web/features/explore/data/countries.json       ISO 3166-1 alpha-2, UN region, label point, labelRank
  */
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
@@ -98,6 +98,10 @@ for (const f of read("ne_50m_admin_0_countries").features) {
     subregion: p.SUBREGION,
     lat: Math.round(p.LABEL_Y * 100) / 100,
     lng: Math.round(p.LABEL_X * 100) / 100,
+    // Natural Earth's own label-priority scale (2 = major/populous country shown at every zoom,
+    // 7 = tiny territory shown only fully zoomed in). Drives which country names the globe shows
+    // first — the closest thing to "large on screen" without per-country polygon area data.
+    labelRank: p.LABELRANK,
   });
 }
 countries.sort((a, b) => a.code.localeCompare(b.code));

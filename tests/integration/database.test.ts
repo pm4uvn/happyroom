@@ -429,3 +429,93 @@ describe("world schema", () => {
     for (const z of zones) expect(z.defaults).toBe(1);
   });
 });
+
+describe("explore discovery (public opt-in)", () => {
+  it("refuses to publish a room without a public name and country", async () => {
+    await inTx(async (tx) => {
+      const guest = await makeGuest(tx);
+      await expectSqlError(tx, "23514", (sp) => makeRoom(sp, guest, { discoverable: true }));
+      await expectSqlError(tx, "23514", (sp) =>
+        makeRoom(sp, guest, { discoverable: true, public_name: "Only a name" }),
+      );
+      // Both present: allowed.
+      const room = await makeRoom(tx, guest, {
+        discoverable: true,
+        public_name: "Mai's birthday bash",
+        public_country: "VN",
+      });
+      expect(room.id).toBeTruthy();
+    });
+  });
+
+  it("never requires public fields while a room stays private", async () => {
+    await inTx(async (tx) => {
+      const guest = await makeGuest(tx);
+      const room = await makeRoom(tx, guest, { discoverable: false });
+      expect(room.id).toBeTruthy();
+    });
+  });
+
+  it("validates the public country as an ISO alpha-2 code", async () => {
+    await inTx(async (tx) => {
+      const guest = await makeGuest(tx);
+      await expectSqlError(tx, "23514", (sp) =>
+        makeRoom(sp, guest, { discoverable: true, public_name: "Party", public_country: "Vietnam" }),
+      );
+    });
+  });
+
+  it("stores a public wish with no participant, defaulting to 'party' for ordinary in-room wishes", async () => {
+    await inTx(async (tx) => {
+      const guest = await makeGuest(tx);
+      const room = await makeRoom(tx, guest, {
+        discoverable: true,
+        public_name: "Party",
+        public_country: "VN",
+      });
+      const [p] =
+        await tx`insert into room_participants (room_id, guest_session_id, role, display_name, avatar_preset)
+                          values (${room.id}, ${guest}, 'host', 'Host', 'mint') returning id`;
+      const [party] = await tx`insert into wishes (room_id, author_participant_id, author_display_name, body)
+                              values (${room.id}, ${p!.id}, 'Host', 'Hi!') returning source`;
+      expect(party!.source).toBe("party");
+      const [pub] =
+        await tx`insert into wishes (room_id, author_participant_id, author_display_name, body, source, idempotency_key)
+                            values (${room.id}, null, 'Visitor', 'Hi!', 'public', gen_random_uuid())
+                            returning status, source`;
+      expect(pub).toMatchObject({ status: "pending", source: "public" });
+      // Authorship consistency (party ⇒ had a participant at send time; public ⇒ never one) is
+      // enforced by application code (lib/server/public-wishes.ts), not a DB constraint — a
+      // perfectly ordinary party wish's author_participant_id legitimately turns NULL once its
+      // participant row is purged (ON DELETE SET NULL, see the retention tests below), and that
+      // must not become a constraint violation.
+      await tx`delete from room_participants where id = ${p!.id}`;
+      const [afterPurge] =
+        await tx`select author_participant_id, source from wishes where room_id = ${room.id} and source = 'party'`;
+      expect(afterPurge).toMatchObject({ author_participant_id: null, source: "party" });
+    });
+  });
+
+  it("rejects a repeated idempotency key for the same room, but allows it for a different room", async () => {
+    await inTx(async (tx) => {
+      const guest = await makeGuest(tx);
+      const roomA = await makeRoom(tx, guest, { discoverable: true, public_name: "A", public_country: "VN" });
+      const roomB = await makeRoom(tx, guest, { discoverable: true, public_name: "B", public_country: "JP" });
+      const key = "11111111-1111-1111-1111-111111111111";
+      await tx`insert into wishes (room_id, author_participant_id, author_display_name, body, source, idempotency_key)
+               values (${roomA.id}, null, 'Visitor', 'Hi!', 'public', ${key})`;
+      await expectSqlError(
+        tx,
+        "23505",
+        (sp) =>
+          sp`insert into wishes (room_id, author_participant_id, author_display_name, body, source, idempotency_key)
+             values (${roomA.id}, null, 'Visitor', 'Hi again!', 'public', ${key})`,
+      );
+      const [b] =
+        await tx`insert into wishes (room_id, author_participant_id, author_display_name, body, source, idempotency_key)
+                          values (${roomB.id}, null, 'Visitor', 'Hi!', 'public', ${key})
+                          returning id`;
+      expect(b!.id).toBeTruthy();
+    });
+  });
+});

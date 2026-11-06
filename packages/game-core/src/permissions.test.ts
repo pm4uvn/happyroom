@@ -13,6 +13,7 @@ describe("room permissions", () => {
       "gift.open",
       "room.lock",
       "room.toggleGifts",
+      "room.discovery",
       "invite.create",
     ];
     for (const action of hostOnly) {

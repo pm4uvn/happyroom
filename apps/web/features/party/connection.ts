@@ -67,6 +67,13 @@ export interface PartyView {
   locked: boolean;
   giftsEnabled: boolean;
   capacity: number;
+  /** Public Explore-dashboard opt-in (room.discovery, host-only). See hostDiscovery. */
+  discoverable: boolean;
+  publicName: string;
+  publicCountry: string;
+  publicIntro: string;
+  acceptWishes: boolean;
+  showParticipantCount: boolean;
   players: PlayerView[];
   wishes: WishView[];
   gifts: GiftView[];
@@ -77,7 +84,8 @@ export type PartyNotice =
   | { kind: "error"; action: string; code: string }
   | { kind: "wishReceived"; status: "pending" | "approved" }
   | { kind: "giftReceived" }
-  | { kind: "snapshotTaken"; name: string };
+  | { kind: "snapshotTaken"; name: string }
+  | { kind: "hostDiscoverySaved"; discoverable: boolean };
 
 export interface JoinTicket {
   partyId: string;
@@ -194,6 +202,9 @@ export class PartyConnection {
     room.onMessage("snapshotTaken", (m: { name: string }) =>
       this.notice({ kind: "snapshotTaken", name: m.name }),
     );
+    room.onMessage("hostDiscoverySaved", (m: { discoverable: boolean }) =>
+      this.notice({ kind: "hostDiscoverySaved", discoverable: m.discoverable }),
+    );
     room.onMessage("wishesPending", (list: WishView[]) => {
       this.pendingWishes = list;
       this.emit();
@@ -248,6 +259,12 @@ export class PartyConnection {
       s.locked,
       s.giftsEnabled,
       s.capacity,
+      s.discoverable,
+      s.publicName,
+      s.publicCountry,
+      s.publicIntro,
+      s.acceptWishes,
+      s.showParticipantCount,
       players.map((p) => [
         p.id,
         p.name,

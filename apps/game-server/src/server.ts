@@ -79,10 +79,38 @@ async function healthHandler(_req: http.IncomingMessage, res: http.ServerRespons
 }
 
 /**
- * Colyseus attaches its own HTTP request listeners (matchmaking routes, 404 for anything else).
- * Wrap them in one dispatcher so GET /health is served by us and everything else by Colyseus.
+ * Internal, trusted-callers-only snapshot of live party rooms: `{ roomId, clients }[]`.
+ * `roomId` is `rooms.id` (party rooms set `this.roomId = row.id`, see party-room.ts), so the web
+ * app can join this with its own `rooms` query by primary key. Never exposes zone rooms (world),
+ * participant identities or anything beyond a room id and a client count.
+ *
+ * Protected by a shared-secret header (the same JOIN_GRANT_SIGNING_KEY both servers already
+ * hold) rather than left open, since it reveals which private rooms currently have people in
+ * them. It is not meant to be reachable from the public internet; in production put it behind
+ * the same network boundary as the game server itself.
  */
-function installHealthRoute(httpServer: http.Server) {
+async function presenceHandler(req: http.IncomingMessage, res: http.ServerResponse, internalKey: string) {
+  const headerKey = req.headers["x-internal-key"];
+  if (!internalKey || headerKey !== internalKey) {
+    res.writeHead(401, { "content-type": "application/json" }).end(JSON.stringify({ error: "unauthorized" }));
+    return;
+  }
+  let partyRooms: { roomId: string; clients: number }[] = [];
+  try {
+    const list = await matchMaker.query({ name: "party" });
+    partyRooms = list.map((r) => ({ roomId: r.roomId, clients: r.clients ?? 0 }));
+  } catch {
+    /* matchmaker not ready: report an empty, honest snapshot rather than guessing */
+  }
+  res.writeHead(200, { "content-type": "application/json", "cache-control": "no-store" });
+  res.end(JSON.stringify({ partyRooms }));
+}
+
+/**
+ * Colyseus attaches its own HTTP request listeners (matchmaking routes, 404 for anything else).
+ * Wrap them in one dispatcher so our own routes are served first and everything else by Colyseus.
+ */
+function installHealthRoute(httpServer: http.Server, internalKey: string) {
   const original = httpServer.listeners("request") as ((
     req: http.IncomingMessage,
     res: http.ServerResponse,
@@ -91,6 +119,10 @@ function installHealthRoute(httpServer: http.Server) {
   httpServer.on("request", (req: http.IncomingMessage, res: http.ServerResponse) => {
     if (req.method === "GET" && (req.url === "/health" || req.url?.startsWith("/health?"))) {
       void healthHandler(req, res);
+      return;
+    }
+    if (req.method === "GET" && req.url === "/internal/presence") {
+      void presenceHandler(req, res, internalKey);
       return;
     }
     for (const l of original) l.call(httpServer, req, res);
@@ -102,7 +134,7 @@ export { installHealthRoute };
 export async function startGameServer(config: GameConfig, port = config.GAME_SERVER_PORT) {
   const { gameServer, httpServer } = createGameServer(config);
   await gameServer.listen(port);
-  installHealthRoute(httpServer);
+  installHealthRoute(httpServer, config.JOIN_GRANT_SIGNING_KEY);
   log.info("game server listening", { port });
   return { gameServer, httpServer };
 }

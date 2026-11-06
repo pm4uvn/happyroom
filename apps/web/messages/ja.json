@@ -419,6 +419,23 @@
       "idle": "操作がなかったため切断されました。",
       "connect_failed": "パーティーサーバーに接続できませんでした。",
       "grant_failed": "このパーティーへのアクセスを取得できませんでした。"
+    },
+    "discovery": {
+      "title": "探索ダッシュボード",
+      "statusOn": "公開",
+      "statusOff": "非公開",
+      "enableLabel": "自分のお祝いを探索ダッシュボードに表示する",
+      "enableHint": "初期設定はオフです。以下に入力した内容だけが表示され、招待リンクやアクセスコード、ゲスト一覧は表示されません。",
+      "nameLabel": "公開名",
+      "countryLabel": "国",
+      "countryPlaceholder": "国を選択",
+      "introLabel": "短い紹介文（任意）",
+      "acceptWishesLabel": "訪問者からのお祝いメッセージを受け付ける",
+      "showCountLabel": "参加人数を表示する",
+      "requiresFields": "公開するには公開名と国を入力してください。",
+      "save": "保存",
+      "savedOn": "あなたのお祝いが探索ダッシュボードに表示されるようになりました。",
+      "savedOff": "あなたのお祝いは非公開になりました。"
     }
   },
   "auth": {
@@ -657,7 +674,7 @@
       "errorBody": "接続を確認して、もう一度お試しください。",
       "retry": "再試行",
       "emptyTitle": "公開中のお祝いはまだありません",
-      "emptyBody": "HAPPYROOMのルームは初期設定で非公開・非掲載で、公開掲載はまだ始まっていません。そのため、架空のルームを表示せず空のままにしています。",
+      "emptyBody": "まだお祝いを公開に設定したホストはいません。ホストが選ばない限り、ルームは非公開・非掲載のままです。",
       "noMatchTitle": "一致するお祝いがありません",
       "noMatchBody": "別の地域・言語・種類をお試しください。"
     },
@@ -673,7 +690,9 @@
       "reset": "表示をリセット",
       "geoError": "地図の輪郭を読み込めませんでした。マーカーは使えます。",
       "cluster": "{count}件のお祝い",
-      "more": "ほか{count}件"
+      "more": "ほか{count}件",
+      "countryNamesOn": "国名を表示",
+      "countryNamesOff": "国名を非表示"
     },
     "detail": {
       "close": "閉じる",
@@ -687,7 +706,10 @@
       "createOwn": "自分のルームを作る",
       "demoJoin": "デモルームには参加できません",
       "clusterTitle": "ここに{count}件のお祝い",
-      "view": "見る"
+      "view": "見る",
+      "sendWish": "お祝いメッセージを送る",
+      "wishHint": "このホストは訪問者からのお祝いメッセージを受け付けています。",
+      "wishesOffHint": "現在、このホストはメッセージを受け付けていません。"
     },
     "steps": {
       "title": "作成 → 共有 → お祝い",
@@ -725,6 +747,55 @@
       "title": "あなたのお祝いを世界地図へ",
       "subtitle": "居心地のいい3Dルーム、ひとつのリンク、みんな一緒に。"
     },
-    "credit": "地図データ: Natural Earth(パブリックドメイン)"
+    "credit": "地図データ: Natural Earth(パブリックドメイン)",
+    "summary": {
+      "groupLabel": "いま行われているお祝い",
+      "celebratingNow": {
+        "label": "開催中"
+      },
+      "peopleCelebrating": {
+        "label": "参加中の人数"
+      },
+      "countriesCelebrating": {
+        "label": "開催中の国の数"
+      },
+      "wishesShared": {
+        "label": "届いたお祝いメッセージ"
+      },
+      "unavailable": "取得できません",
+      "unavailableHint": "現在ライブの数値を取得できませんでした。しばらくしてからもう一度お試しください。",
+      "allZeroHint": "いま公開中のお祝いはありません。",
+      "allZeroCta": "はじめる"
+    },
+    "wish": {
+      "title": "お祝いメッセージを送る",
+      "close": "閉じる",
+      "nameLabel": "お名前",
+      "namePlaceholder": "お名前",
+      "bodyLabel": "メッセージ",
+      "bodyPlaceholder": "短いメッセージを書いてください…",
+      "templates": {
+        "t1": "素敵なお祝いになりますように！🎉",
+        "t2": "素晴らしい一日になりますように！",
+        "t3": "遠くからお祝いしています！💛",
+        "t4": "愛と祝福を送ります！",
+        "t5": "最高の一日になりますように！"
+      },
+      "send": "お祝いメッセージを送る",
+      "sending": "送信中…",
+      "successTitle": "送信しました！ホストが確認します",
+      "successBody": "誰かの一日を特別なものに。あなたも自分のお祝いを作ってみませんか。",
+      "successCta": "お祝いを作成",
+      "errors": {
+        "not_found": "このお祝いは見つかりませんでした。",
+        "wishes_disabled": "現在、このホストはメッセージを受け付けていません。",
+        "ended": "このお祝いは終了しました。",
+        "validation_failed": "お名前とメッセージをご確認ください。",
+        "rate_limited": "メッセージが多すぎます。数分後にもう一度お試しください。",
+        "blocked_content": "このメッセージは送信できません。リンクは含めないでください。",
+        "network": "送信できませんでした。接続を確認してもう一度お試しください。",
+        "generic": "送信できませんでした。もう一度お試しください。"
+      }
+    }
   }
 }

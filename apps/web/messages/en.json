@@ -419,6 +419,23 @@
       "idle": "You were disconnected for being idle.",
       "connect_failed": "Couldn't connect to the party server.",
       "grant_failed": "Couldn't get access to this party."
+    },
+    "discovery": {
+      "title": "Explore dashboard",
+      "statusOn": "Public",
+      "statusOff": "Private",
+      "enableLabel": "Show my celebration on the Explore dashboard",
+      "enableHint": "Off by default. Shows only what you fill in below — never your invite link, access code or guest list.",
+      "nameLabel": "Public name",
+      "countryLabel": "Country",
+      "countryPlaceholder": "Choose a country",
+      "introLabel": "Short intro (optional)",
+      "acceptWishesLabel": "Accept congratulations from visitors",
+      "showCountLabel": "Show how many people are here",
+      "requiresFields": "Add a public name and country to go public.",
+      "save": "Save",
+      "savedOn": "Your celebration is now on the Explore dashboard.",
+      "savedOff": "Your celebration is no longer public."
     }
   },
   "auth": {
@@ -657,7 +674,7 @@
       "errorBody": "Check your connection and try again.",
       "retry": "Try again",
       "emptyTitle": "No public celebrations yet",
-      "emptyBody": "HAPPYROOM rooms are private and unlisted by default, and public listing isn't open yet — so this map stays honest instead of showing made-up rooms.",
+      "emptyBody": "No host has chosen to make a celebration public yet. Rooms stay private and unlisted unless their host opts in.",
       "noMatchTitle": "No celebrations match",
       "noMatchBody": "Try another region, language or celebration type."
     },
@@ -673,7 +690,9 @@
       "reset": "Reset view",
       "geoError": "Map outlines couldn't load. Markers still work.",
       "cluster": "{count} celebrations",
-      "more": "+{count} more"
+      "more": "+{count} more",
+      "countryNamesOn": "Show country names",
+      "countryNamesOff": "Hide country names"
     },
     "detail": {
       "close": "Close",
@@ -687,7 +706,10 @@
       "createOwn": "Create your own",
       "demoJoin": "Demo rooms can't be joined",
       "clusterTitle": "{count} celebrations here",
-      "view": "View"
+      "view": "View",
+      "sendWish": "Send congratulations",
+      "wishHint": "This host is accepting messages of congratulations from visitors.",
+      "wishesOffHint": "This host isn't accepting messages right now."
     },
     "steps": {
       "title": "Create → Share → Celebrate",
@@ -725,6 +747,55 @@
       "title": "Put your celebration on the map",
       "subtitle": "A cozy 3D room, one link, everyone together."
     },
-    "credit": "Map data: Natural Earth (public domain)"
+    "credit": "Map data: Natural Earth (public domain)",
+    "summary": {
+      "groupLabel": "Celebration activity, right now",
+      "celebratingNow": {
+        "label": "Celebrating now"
+      },
+      "peopleCelebrating": {
+        "label": "People celebrating"
+      },
+      "countriesCelebrating": {
+        "label": "Countries celebrating"
+      },
+      "wishesShared": {
+        "label": "Wishes shared"
+      },
+      "unavailable": "Unavailable",
+      "unavailableHint": "Couldn't reach the live count right now. Try again shortly.",
+      "allZeroHint": "No public celebrations are live right now.",
+      "allZeroCta": "Start one"
+    },
+    "wish": {
+      "title": "Send congratulations",
+      "close": "Close",
+      "nameLabel": "Your name",
+      "namePlaceholder": "Your name",
+      "bodyLabel": "Your message",
+      "bodyPlaceholder": "Write a short message…",
+      "templates": {
+        "t1": "Happy celebrating! 🎉",
+        "t2": "Wishing you a wonderful day!",
+        "t3": "Congratulations from afar! 💛",
+        "t4": "Sending love and good wishes!",
+        "t5": "Hope it's an amazing one!"
+      },
+      "send": "Send congratulations",
+      "sending": "Sending…",
+      "successTitle": "Sent! The host will review it",
+      "successBody": "Make someone's day. Create your own celebration.",
+      "successCta": "Create a Celebration",
+      "errors": {
+        "not_found": "This celebration can't be found.",
+        "wishes_disabled": "This host isn't accepting messages right now.",
+        "ended": "This celebration has ended.",
+        "validation_failed": "Please check your name and message.",
+        "rate_limited": "Too many messages — please try again in a few minutes.",
+        "blocked_content": "That message can't be sent: no links, please.",
+        "network": "Couldn't send — check your connection and try again.",
+        "generic": "Couldn't send. Please try again."
+      }
+    }
   }
 }

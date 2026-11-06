@@ -11,12 +11,18 @@
  * edited, already-applied migration is reported as an error rather than silently skipped.
  */
 import { createHash } from "node:crypto";
+import { existsSync } from "node:fs";
 import { readFile, readdir } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import postgres from "postgres";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+// Same root .env the web app and game server already load (next.config.ts, game-server config.ts).
+// loadEnvFile never overrides a variable the shell already exported, so `DATABASE_URL=... node
+// scripts/db-migrate.mjs` still wins when you want to target something other than .env.
+const rootEnv = path.join(root, ".env");
+if (existsSync(rootEnv)) process.loadEnvFile(rootEnv);
 const args = new Set(process.argv.slice(2));
 const url = process.env.DATABASE_URL ?? "postgres://happyroom:happyroom@localhost:54329/happyroom";
 

@@ -2,7 +2,18 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { Camera, Gift as GiftIcon, Lock, LogOut, Sparkles, Unlock, UserPlus, Users, X } from "lucide-react";
+import {
+  Camera,
+  Gift as GiftIcon,
+  Globe2,
+  Lock,
+  LogOut,
+  Sparkles,
+  Unlock,
+  UserPlus,
+  Users,
+  X,
+} from "lucide-react";
 import {
   CAKE_STYLES,
   DECORATION_PRESETS,
@@ -16,6 +27,7 @@ import {
   type ThemeId,
 } from "@happyroom/shared";
 import { Badge, Button, cn } from "@happyroom/ui";
+import { COUNTRIES, countryName } from "@/features/explore/countries";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import { detectQualityTier, probeGpu } from "@/features/room-scene/capabilities";
 import { AvatarTag, createLabelRegistry, Label, LabelLayer } from "@/features/room-scene/labels";
@@ -110,6 +122,8 @@ export default function PartyExperience({
         toast(n.status === "approved" ? t("wish.sentApproved") : t("wish.sent"));
       else if (n.kind === "giftReceived") toast(t("gift.sent"));
       else if (n.kind === "snapshotTaken") toast(t("snapshot.taken", { name: n.name }));
+      else if (n.kind === "hostDiscoverySaved")
+        toast(n.discoverable ? t("discovery.savedOn") : t("discovery.savedOff"));
     });
     return () => {
       offKeys();
@@ -480,6 +494,12 @@ export default function PartyExperience({
               isMod={isMod}
               locked={view.locked}
               giftsEnabled={view.giftsEnabled}
+              discoverable={view.discoverable}
+              publicName={view.publicName}
+              publicCountry={view.publicCountry}
+              publicIntro={view.publicIntro}
+              acceptWishes={view.acceptWishes}
+              showParticipantCount={view.showParticipantCount}
             />
           )}
           {panel === "wishes" && <WishesPanel conn={conn} isMod={isMod} onSent={() => interacted("wish")} />}
@@ -558,6 +578,12 @@ function PeoplePanel({
   isMod,
   locked,
   giftsEnabled,
+  discoverable,
+  publicName,
+  publicCountry,
+  publicIntro,
+  acceptWishes,
+  showParticipantCount,
 }: {
   conn: PartyConnection;
   players: PlayerView[];
@@ -565,6 +591,12 @@ function PeoplePanel({
   isMod: boolean;
   locked: boolean;
   giftsEnabled: boolean;
+  discoverable: boolean;
+  publicName: string;
+  publicCountry: string;
+  publicIntro: string;
+  acceptWishes: boolean;
+  showParticipantCount: boolean;
 }) {
   const t = useTranslations("party");
   const tAll = useTranslations();
@@ -589,6 +621,17 @@ function PeoplePanel({
             <GiftIcon aria-hidden /> {giftsEnabled ? t("moderation.giftsOff") : t("moderation.giftsOn")}
           </Button>
         </div>
+      )}
+      {isHost && (
+        <DiscoverySettings
+          conn={conn}
+          discoverable={discoverable}
+          publicName={publicName}
+          publicCountry={publicCountry}
+          publicIntro={publicIntro}
+          acceptWishes={acceptWishes}
+          showParticipantCount={showParticipantCount}
+        />
       )}
       <ul className="flex flex-col gap-1.5" data-testid="people-list">
         {players.map((p) => (
@@ -642,6 +685,157 @@ function PeoplePanel({
         ))}
       </ul>
     </div>
+  );
+}
+
+/**
+ * Host-only opt-in to the public Explore dashboard. OFF by default; saving requires a public
+ * name and country (separate from the private room title/honoree). Turning it off clears those
+ * public fields server-side (see hostDiscovery in party-room.ts) — this form does not control
+ * who gets to re-enable it, that permission check happens again on every save.
+ */
+function DiscoverySettings({
+  conn,
+  discoverable,
+  publicName,
+  publicCountry,
+  publicIntro,
+  acceptWishes,
+  showParticipantCount,
+}: {
+  conn: PartyConnection;
+  discoverable: boolean;
+  publicName: string;
+  publicCountry: string;
+  publicIntro: string;
+  acceptWishes: boolean;
+  showParticipantCount: boolean;
+}) {
+  const t = useTranslations("party.discovery");
+  const [open, setOpen] = useState(false);
+  const [form, setForm] = useState({
+    enabled: discoverable,
+    name: publicName,
+    country: publicCountry,
+    intro: publicIntro,
+    acceptWishes,
+    showCount: showParticipantCount,
+  });
+  const invalid = form.enabled && (!form.name.trim() || !form.country);
+
+  const save = () => {
+    if (invalid) return;
+    conn.send("hostDiscovery", {
+      discoverable: form.enabled,
+      publicName: form.name.trim() || undefined,
+      publicCountry: form.country || undefined,
+      publicIntro: form.intro.trim() || undefined,
+      acceptWishes: form.acceptWishes,
+      showParticipantCount: form.showCount,
+    });
+  };
+
+  return (
+    <div className="rounded-2xl bg-dream-50 p-3" data-testid="discovery-settings">
+      <button
+        type="button"
+        className="flex w-full items-center justify-between gap-2 text-left"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        data-testid="discovery-toggle-open"
+      >
+        <span className="flex items-center gap-2 font-bold text-ink">
+          <Globe2 aria-hidden className="size-4" /> {t("title")}
+        </span>
+        <Badge tone={discoverable ? "mint" : "neutral"}>
+          {discoverable ? t("statusOn") : t("statusOff")}
+        </Badge>
+      </button>
+      {open && (
+        <div className="mt-3 flex flex-col gap-2.5">
+          <label className="flex items-center gap-2 text-sm font-semibold text-ink">
+            <input
+              type="checkbox"
+              checked={form.enabled}
+              onChange={(e) => setForm((f) => ({ ...f, enabled: e.target.checked }))}
+              data-testid="discovery-enable"
+            />
+            {t("enableLabel")}
+          </label>
+          <p className="text-xs text-ink-soft">{t("enableHint")}</p>
+          {form.enabled && (
+            <>
+              <Field label={t("nameLabel")}>
+                <input
+                  type="text"
+                  value={form.name}
+                  maxLength={80}
+                  onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
+                  className="w-full rounded-xl bg-white px-3 py-2 text-sm ring-1 ring-line"
+                  data-testid="discovery-name"
+                />
+              </Field>
+              <Field label={t("countryLabel")}>
+                <select
+                  value={form.country}
+                  onChange={(e) => setForm((f) => ({ ...f, country: e.target.value }))}
+                  className="w-full rounded-xl bg-white px-3 py-2 text-sm ring-1 ring-line"
+                  data-testid="discovery-country"
+                >
+                  <option value="">{t("countryPlaceholder")}</option>
+                  {COUNTRIES.map((c) => (
+                    <option key={c.code} value={c.code}>
+                      {countryName(c.code, "en")}
+                    </option>
+                  ))}
+                </select>
+              </Field>
+              <Field label={t("introLabel")}>
+                <textarea
+                  value={form.intro}
+                  maxLength={280}
+                  rows={2}
+                  onChange={(e) => setForm((f) => ({ ...f, intro: e.target.value }))}
+                  className="w-full resize-none rounded-xl bg-white px-3 py-2 text-sm ring-1 ring-line"
+                  data-testid="discovery-intro"
+                />
+              </Field>
+              <label className="flex items-center gap-2 text-sm font-semibold text-ink">
+                <input
+                  type="checkbox"
+                  checked={form.acceptWishes}
+                  onChange={(e) => setForm((f) => ({ ...f, acceptWishes: e.target.checked }))}
+                  data-testid="discovery-accept-wishes"
+                />
+                {t("acceptWishesLabel")}
+              </label>
+              <label className="flex items-center gap-2 text-sm font-semibold text-ink">
+                <input
+                  type="checkbox"
+                  checked={form.showCount}
+                  onChange={(e) => setForm((f) => ({ ...f, showCount: e.target.checked }))}
+                  data-testid="discovery-show-count"
+                />
+                {t("showCountLabel")}
+              </label>
+              {invalid && <p className="text-xs font-semibold text-danger">{t("requiresFields")}</p>}
+            </>
+          )}
+          <Button size="sm" onClick={save} disabled={invalid} data-testid="discovery-save">
+            {t("save")}
+          </Button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function Field({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <label className="flex flex-col gap-1 text-sm font-semibold text-ink">
+      {label}
+      {children}
+    </label>
   );
 }
 

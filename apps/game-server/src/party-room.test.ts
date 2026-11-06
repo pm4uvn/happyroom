@@ -121,6 +121,9 @@ afterAll(async () => {
     gameServer.gracefullyShutdown(false).catch(() => {}),
     new Promise((r) => setTimeout(r, 3000)),
   ]);
+  // Safety net: this DB has no transactional rollback (unlike tests/integration/database.test.ts)
+  // and is shared with local E2E runs, so a test room must never stay publicly discoverable.
+  await sql`update rooms set discoverable = false, public_name = null, public_country = null where discoverable`;
   await closeDb();
   await sql.end();
 });
@@ -298,6 +301,16 @@ describe("wishes, gifts and moderation", () => {
       ["hostLock", { locked: true }],
       ["hostKick", { participantId: f.participants.host!.id, ban: true }],
       ["hostGifts", { enabled: false }],
+      [
+        "hostDiscovery",
+        {
+          discoverable: true,
+          publicName: "Mai's party",
+          publicCountry: "VN",
+          acceptWishes: true,
+          showParticipantCount: false,
+        },
+      ],
     ] as const) {
       const err = nextMessage<{ code: string }>(guest.room, "error");
       guest.room.send(type, payload);
@@ -306,6 +319,90 @@ describe("wishes, gifts and moderation", () => {
     const [room] = await sql`select locked from rooms where id = ${f.roomId}`;
     expect(room!.locked).toBe(false);
   });
+
+  it("host opts a room into public discovery, sets its public fields, and can opt out again", async () => {
+    const f = await makeRoom();
+    const host = await join(f, "host");
+    host.room.send("hostDiscovery", {
+      discoverable: true,
+      publicName: "Mai's birthday bash",
+      publicCountry: "VN",
+      publicIntro: "Join us for cake!",
+      acceptWishes: true,
+      showParticipantCount: true,
+    });
+    await waitFor(() => (host.room.state as { discoverable: boolean }).discoverable === true);
+    expect(host.room.state as unknown as Record<string, unknown>).toMatchObject({
+      publicName: "Mai's birthday bash",
+      publicCountry: "VN",
+      publicIntro: "Join us for cake!",
+      acceptWishes: true,
+      showParticipantCount: true,
+    });
+    let [row] = await sql`select discoverable, public_name, public_country from rooms where id = ${f.roomId}`;
+    expect(row).toMatchObject({
+      discoverable: true,
+      public_name: "Mai's birthday bash",
+      public_country: "VN",
+    });
+
+    host.room.send("hostDiscovery", {
+      discoverable: false,
+      acceptWishes: true,
+      showParticipantCount: false,
+    });
+    await waitFor(() => (host.room.state as { discoverable: boolean }).discoverable === false);
+    [row] = await sql`select discoverable, public_name, public_country from rooms where id = ${f.roomId}`;
+    expect(row).toMatchObject({ discoverable: false, public_name: null, public_country: null });
+  });
+
+  it("rejects opting in without a public name and country", async () => {
+    const f = await makeRoom();
+    const host = await join(f, "host");
+    const err = nextMessage<{ code: string }>(host.room, "error");
+    host.room.send("hostDiscovery", { discoverable: true, acceptWishes: true, showParticipantCount: false });
+    expect((await err).code).toBe("invalid_payload");
+    const [row] = await sql`select discoverable from rooms where id = ${f.roomId}`;
+    expect(row!.discoverable).toBe(false);
+  });
+
+  it("picks up a wish sent from the Explore dashboard (HTTP, no join) while the host is already connected", async () => {
+    const f = await makeRoom();
+    const host = await join(f, "host");
+    host.room.send("hostDiscovery", {
+      discoverable: true,
+      publicName: "Mai's party",
+      publicCountry: "VN",
+      acceptWishes: true,
+      showParticipantCount: false,
+    });
+    await waitFor(() => (host.room.state as { discoverable: boolean }).discoverable === true);
+
+    // Simulates apps/web's lib/server/public-wishes.ts inserting directly into the table.
+    const [row] = await sql`
+      insert into wishes (room_id, author_participant_id, author_display_name, body, status, source, idempotency_key)
+      values (${f.roomId}, null, 'A visitor', 'Congratulations from afar!', 'pending', 'public', ${randomUUID()})
+      returning id`;
+
+    const pending = await nextMessage<{ id: string; author: string; body: string }>(
+      host.room,
+      "wishPending",
+      7000,
+    );
+    expect(pending).toMatchObject({ id: row!.id, author: "A visitor", body: "Congratulations from afar!" });
+
+    host.room.send("moderateWish", { wishId: pending.id, approve: true });
+    // Approval publishes it into the live room state (the same "wishes" every player already sees).
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    await waitFor(() => (host.room.state as any).wishes.some((w: { id: string }) => w.id === pending.id));
+    const [after] = await sql`select status from wishes where id = ${row!.id}`;
+    expect(after!.status).toBe("approved");
+
+    // This DB is shared with the Explore dashboard's E2E tests; never leave a test room publicly
+    // discoverable (the afterAll safety net below also catches this, belt-and-braces).
+    host.room.send("hostDiscovery", { discoverable: false, acceptWishes: true, showParticipantCount: false });
+    await waitFor(() => (host.room.state as { discoverable: boolean }).discoverable === false);
+  }, 15_000);
 
   it("sends gifts once per idempotency key and lets the host open them", async () => {
     const f = await makeRoom();

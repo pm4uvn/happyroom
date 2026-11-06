@@ -7,7 +7,10 @@ import type { PublicCelebration } from "@/features/explore/model";
  * real discovery results, and disabled in production unless EXPLORE_DEMO_ENABLED=true.
  * No participant counts are invented (participantCount = null).
  */
-type Fixture = Omit<PublicCelebration, "id" | "startsAt" | "participantCount" | "capacity"> & {
+type Fixture = Omit<
+  PublicCelebration,
+  "id" | "startsAt" | "participantCount" | "capacity" | "intro" | "acceptingWishes"
+> & {
   /** Hours from now for upcoming ones. */
   inHours?: number;
 };
@@ -231,5 +234,7 @@ export function demoCelebrations(now = new Date()): PublicCelebration[] {
     startsAt: inHours ? new Date(hour.getTime() + inHours * 3_600_000).toISOString() : null,
     participantCount: null,
     capacity: null,
+    intro: null,
+    acceptingWishes: false,
   }));
 }

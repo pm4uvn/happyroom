@@ -75,6 +75,14 @@ export const PartyState = schema(
     locked: t.boolean(),
     giftsEnabled: t.boolean(),
     capacity: t.number(),
+    // Public Explore dashboard opt-in (room.discovery, host-only). Not sensitive — same
+    // visibility as `locked`/`giftsEnabled` above — so it is plain room state, not a private send.
+    discoverable: t.boolean(),
+    publicName: t.string(),
+    publicCountry: t.string(),
+    publicIntro: t.string(),
+    acceptWishes: t.boolean(),
+    showParticipantCount: t.boolean(),
     players: t.map(Player),
     wishes: t.array(Wish),
     gifts: t.array(Gift),

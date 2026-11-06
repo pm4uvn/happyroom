@@ -7,6 +7,7 @@ import * as THREE from "three";
 import type { QualityTier } from "@/features/room-scene/capabilities";
 import { clusterCelebrations, clusterThreshold, type Cluster, type PublicCelebration } from "../model";
 import { CameraRig, type FocusTarget, type ZoomCommand } from "./camera-rig";
+import { CountryLabelsDriver, type LabelRegistry } from "./country-labels";
 import { Earth } from "./earth";
 import { latLngToXYZ, loadGeo, type GeoData } from "./geo";
 import { Markers, projectCluster } from "./markers";
@@ -27,6 +28,10 @@ export interface GlobeCanvasProps {
   onPick: (cluster: Cluster) => void;
   onReady: () => void;
   onGeoError: () => void;
+  countryLabelsRegistry: LabelRegistry;
+  showCountryLabels: boolean;
+  selectedCountry: string;
+  narrow: boolean;
 }
 
 /** Fixed opening view (never derived from the visitor's location). */
@@ -97,6 +102,10 @@ function GlobeContent({
   onPick,
   onReady,
   geoReady,
+  countryLabelsRegistry,
+  showCountryLabels,
+  selectedCountry,
+  narrow,
 }: GlobeCanvasProps & { geoReady: boolean }) {
   const [threshold, setThreshold] = useState(() => clusterThreshold(initialDistance));
   const [hovered, setHovered] = useState<Cluster | null>(null);
@@ -168,6 +177,14 @@ function GlobeContent({
         hoveredId={hoveredCluster?.id ?? null}
         reducedMotion={reducedMotion}
         handlers={handlers}
+      />
+      <CountryLabelsDriver
+        celebrations={celebrations}
+        clusters={clusters}
+        selectedCountry={selectedCountry}
+        registry={countryLabelsRegistry}
+        enabled={showCountryLabels}
+        narrow={narrow}
       />
     </>
   );

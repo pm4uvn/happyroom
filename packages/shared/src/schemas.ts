@@ -42,6 +42,17 @@ export function multiLineText(maxGraphemes: number) {
     );
 }
 
+/** Optional single-line text where an empty string is normalised to undefined. */
+export function optionalSingleLineText(maxGraphemes: number) {
+  return z
+    .string()
+    .max(maxGraphemes * 8)
+    .transform(sanitizeSingleLine)
+    .pipe(z.string().refine((v) => graphemeLength(v) <= maxGraphemes, { message: "too_long" }))
+    .transform((v) => (v.length === 0 ? undefined : v))
+    .optional();
+}
+
 /** Optional multi-line text where an empty string is normalised to undefined. */
 export function optionalMultiLineText(maxGraphemes: number) {
   return z
@@ -129,6 +140,16 @@ export type JoinRoomInput = z.input<typeof joinRoomInputSchema>;
 export const sendWishInputSchema = z.object({
   body: multiLineText(LIMITS.wishMaxChars),
 });
+
+/** A visitor sending congratulations from the Explore dashboard — never requires joining the 3D room. */
+export const sendPublicWishInputSchema = z.object({
+  roomId: z.uuid(),
+  displayName: displayNameSchema,
+  body: multiLineText(LIMITS.publicWishMaxChars),
+  /** Client-generated; a retried submit with the same key lands once. */
+  idempotencyKey: z.uuid(),
+});
+export type SendPublicWishInput = z.input<typeof sendPublicWishInputSchema>;
 
 export const sendGiftInputSchema = z.object({
   catalogId: z.enum(GIFT_CATALOG_IDS),
