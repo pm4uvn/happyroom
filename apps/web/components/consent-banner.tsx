@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { Button } from "@happyroom/ui";
+import { Button, cn } from "@happyroom/ui";
 import { getConsent, setConsent } from "@/lib/analytics/client";
 
 export const OPEN_CONSENT_EVENT = "hr:open-consent";
@@ -63,12 +63,15 @@ export function ConsentBanner() {
   );
 }
 
-export function AnalyticsSettingsButton({ label }: { label: string }) {
+export function AnalyticsSettingsButton({ label, className }: { label: string; className?: string }) {
   return (
     <button
       type="button"
       onClick={() => window.dispatchEvent(new Event(OPEN_CONSENT_EVENT))}
-      className="rounded-md font-semibold text-ink-soft underline-offset-4 hover:text-ink hover:underline focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-dream/35"
+      className={cn(
+        "rounded-md font-semibold text-ink-soft underline-offset-4 hover:text-ink hover:underline focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-dream/35",
+        className,
+      )}
     >
       {label}
     </button>

@@ -63,6 +63,8 @@ export default defineConfig({
             // Invite links must point at this test server, not a local dev server on :3000.
             NEXT_PUBLIC_APP_URL: baseURL,
             NEXT_DIST_DIR: ".next-e2e",
+            // Lets the Explore tests use the labelled demo fixtures in this production build.
+            EXPLORE_DEMO_ENABLED: "true",
           },
         },
       ],

@@ -4,6 +4,10 @@
 
 > **Status:** the core product loop works end-to-end with real multiplayer — Create Room → Share Invite → Join → see each other move in real time → wishes, gifts, synchronized candle ceremony, party photo. Feature-by-feature evidence and remaining gaps: [docs/MVP_GAP_ANALYSIS.md](docs/MVP_GAP_ANALYSIS.md).
 
+## Explore dashboard (landing)
+
+The home page is a 3D globe of **public** celebrations with search and filters. No room is public yet (public discovery needs a host opt-in that does not exist), so it shows an honest empty state; `/?demo=1` previews clearly labelled demo celebrations (dev only, or `EXPLORE_DEMO_ENABLED=true`). Details, privacy rules and what is missing: [docs/EXPLORE.md](docs/EXPLORE.md).
+
 ## HAPPYROOM World (new)
 
 **Your World. Your People. Your Celebrations.** Open **http://localhost:3000/world** (or "World" in the header): sign in (guest or username + password), create a character (6 avatars, unique name, age group), and walk the 40 × 40 m **Central Plaza** with other real players. Walk to the **Birthday House**, press **E**, create or join a private party, then use **Back to Plaza** to reappear at its door. The east gate leads to the **Garden Terrace**, a second zone defined purely by data.

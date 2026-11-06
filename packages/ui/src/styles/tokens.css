@@ -25,6 +25,21 @@
   --color-surface: #ffffff;
   --color-line: #e7e3f5;
   --color-danger: #d64560;
+
+  /* Night palette (Explore dashboard). Text on midnight: white ≥ 15:1, night-muted ≥ 7:1. */
+  --color-midnight: #070b1f;
+  --color-midnight-900: #0b1130;
+  --color-midnight-800: #111a3f;
+  --color-midnight-700: #1a2552;
+  --color-midnight-600: #26326a;
+  --color-night-muted: #aab4d6;
+  --color-night-line: rgb(170 180 214 / 0.16);
+  --color-cyan: #4fd8eb;
+  --color-cyan-300: #8be8f4;
+  --color-cyan-700: #1a9db0;
+  --color-violet: #a48bff;
+  --color-violet-300: #c9b9ff;
+  --color-amber: #ffc861;
   --color-success: #2f8f82;
 
   --font-sans:

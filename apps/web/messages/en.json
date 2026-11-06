@@ -589,5 +589,142 @@
   },
   "nav2": {
     "world": "World"
+  },
+  "explore": {
+    "eyebrow": "Live celebration map",
+    "subtitle": "Discover celebrations around the world — or create your own 3D room in under a minute and gather friends from anywhere.",
+    "cta": {
+      "create": "Create a Celebration",
+      "join": "Join with a Code"
+    },
+    "nav": {
+      "explore": "Explore",
+      "world": "World",
+      "main": "Main"
+    },
+    "panel": {
+      "title": "Explore celebrations",
+      "search": "Search celebrations",
+      "searchPlaceholder": "Room name or country",
+      "filters": "Filters",
+      "region": "Region",
+      "country": "Country",
+      "language": "Language",
+      "type": "Celebration",
+      "allRegions": "All regions",
+      "allCountries": "All countries",
+      "allLanguages": "All languages",
+      "allTypes": "All types",
+      "clear": "Clear filters",
+      "results": "{count, plural, =0 {No celebrations} one {# celebration} other {# celebrations}}",
+      "list": "Celebrations",
+      "showMore": "Show more ({count})"
+    },
+    "regions": {
+      "Africa": "Africa",
+      "Americas": "Americas",
+      "Asia": "Asia",
+      "Europe": "Europe",
+      "Oceania": "Oceania",
+      "Antarctica": "Antarctica"
+    },
+    "types": {
+      "birthday": "Birthday",
+      "wedding": "Wedding",
+      "graduation": "Graduation",
+      "anniversary": "Anniversary",
+      "corporate": "Team celebration"
+    },
+    "status": {
+      "live": "Live now",
+      "upcoming": "Starts {time}",
+      "upcomingSoon": "Upcoming"
+    },
+    "access": {
+      "demo": "Demo · not joinable",
+      "invite": "Invite or code needed"
+    },
+    "mode": {
+      "live": "Live",
+      "demo": "Demo celebrations",
+      "demoNotice": "Sample data to preview the map. These rooms are not real and can't be joined.",
+      "exitDemo": "Exit demo",
+      "tryDemo": "Preview with demo celebrations"
+    },
+    "state": {
+      "loading": "Loading celebrations…",
+      "errorTitle": "Couldn't load celebrations",
+      "errorBody": "Check your connection and try again.",
+      "retry": "Try again",
+      "emptyTitle": "No public celebrations yet",
+      "emptyBody": "HAPPYROOM rooms are private and unlisted by default, and public listing isn't open yet — so this map stays honest instead of showing made-up rooms.",
+      "noMatchTitle": "No celebrations match",
+      "noMatchBody": "Try another region, language or celebration type."
+    },
+    "globe": {
+      "label": "Interactive globe of public celebrations. The list offers the same celebrations.",
+      "loading": "Preparing the globe…",
+      "fallbackTitle": "3D globe unavailable",
+      "fallbackBody": "This browser can't show the 3D globe. Every celebration is still in the list.",
+      "reducedMotion": "Reduced motion is on, so the globe stays still.",
+      "hint": "Drag to spin · scroll or pinch to zoom",
+      "zoomIn": "Zoom in",
+      "zoomOut": "Zoom out",
+      "reset": "Reset view",
+      "geoError": "Map outlines couldn't load. Markers still work.",
+      "cluster": "{count} celebrations",
+      "more": "+{count} more"
+    },
+    "detail": {
+      "close": "Close",
+      "country": "Country",
+      "language": "Language",
+      "type": "Type",
+      "when": "When",
+      "participants": "{count} joined",
+      "inviteHint": "Rooms stay invite-only: ask the host for the invite link or room code.",
+      "demoHint": "This is a demo celebration. Create your own room to celebrate for real.",
+      "createOwn": "Create your own",
+      "demoJoin": "Demo rooms can't be joined",
+      "clusterTitle": "{count} celebrations here",
+      "view": "View"
+    },
+    "steps": {
+      "title": "Create → Share → Celebrate",
+      "subtitle": "From idea to party in about a minute.",
+      "create": {
+        "title": "Create",
+        "body": "Pick a theme, a cake and a time. Your 3D room is ready in seconds — no account needed."
+      },
+      "share": {
+        "title": "Share",
+        "body": "Send one private link or a room code in any chat app. Add an access code for extra privacy."
+      },
+      "celebrate": {
+        "title": "Celebrate",
+        "body": "Friends join as avatars from any phone or browser and blow out the candles together, live."
+      }
+    },
+    "safety": {
+      "title": "Private by default",
+      "subtitle": "Discovery never trades away privacy.",
+      "unlisted": {
+        "title": "Unlisted unless the host opts in",
+        "body": "Rooms appear on the map only after their host chooses public discovery. An invite link alone never makes a room public."
+      },
+      "location": {
+        "title": "Country, not location",
+        "body": "The globe shows a host-chosen country — never your position, address or exact coordinates."
+      },
+      "codes": {
+        "title": "Invites stay secret",
+        "body": "Invite links, access codes and names are never part of the public map."
+      }
+    },
+    "finalCta": {
+      "title": "Put your celebration on the map",
+      "subtitle": "A cozy 3D room, one link, everyone together."
+    },
+    "credit": "Map data: Natural Earth (public domain)"
   }
 }

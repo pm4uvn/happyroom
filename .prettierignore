@@ -6,3 +6,6 @@ coverage
 pnpm-lock.yaml
 playwright-report
 test-results
+.next-e2e
+apps/web/public/geo
+apps/web/features/explore/data

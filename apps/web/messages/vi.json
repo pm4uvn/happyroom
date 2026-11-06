@@ -589,5 +589,142 @@
   },
   "nav2": {
     "world": "Thế giới"
+  },
+  "explore": {
+    "eyebrow": "Bản đồ ăn mừng trực tiếp",
+    "subtitle": "Khám phá những buổi ăn mừng khắp thế giới — hoặc tạo phòng 3D của riêng bạn trong chưa đầy một phút và tụ họp bạn bè ở bất cứ đâu.",
+    "cta": {
+      "create": "Tạo buổi ăn mừng",
+      "join": "Tham gia bằng mã"
+    },
+    "nav": {
+      "explore": "Khám phá",
+      "world": "Thế giới",
+      "main": "Chính"
+    },
+    "panel": {
+      "title": "Khám phá buổi ăn mừng",
+      "search": "Tìm buổi ăn mừng",
+      "searchPlaceholder": "Tên phòng hoặc quốc gia",
+      "filters": "Bộ lọc",
+      "region": "Khu vực",
+      "country": "Quốc gia",
+      "language": "Ngôn ngữ",
+      "type": "Loại sự kiện",
+      "allRegions": "Mọi khu vực",
+      "allCountries": "Mọi quốc gia",
+      "allLanguages": "Mọi ngôn ngữ",
+      "allTypes": "Mọi loại",
+      "clear": "Xóa bộ lọc",
+      "results": "{count, plural, =0 {Không có buổi nào} other {# buổi ăn mừng}}",
+      "list": "Danh sách buổi ăn mừng",
+      "showMore": "Xem thêm ({count})"
+    },
+    "regions": {
+      "Africa": "Châu Phi",
+      "Americas": "Châu Mỹ",
+      "Asia": "Châu Á",
+      "Europe": "Châu Âu",
+      "Oceania": "Châu Đại Dương",
+      "Antarctica": "Châu Nam Cực"
+    },
+    "types": {
+      "birthday": "Sinh nhật",
+      "wedding": "Đám cưới",
+      "graduation": "Tốt nghiệp",
+      "anniversary": "Kỷ niệm",
+      "corporate": "Tiệc công ty"
+    },
+    "status": {
+      "live": "Đang diễn ra",
+      "upcoming": "Bắt đầu {time}",
+      "upcomingSoon": "Sắp diễn ra"
+    },
+    "access": {
+      "demo": "Demo · không thể tham gia",
+      "invite": "Cần lời mời hoặc mã"
+    },
+    "mode": {
+      "live": "Trực tiếp",
+      "demo": "Buổi ăn mừng demo",
+      "demoNotice": "Dữ liệu mẫu để xem trước bản đồ. Các phòng này không có thật và không thể tham gia.",
+      "exitDemo": "Thoát demo",
+      "tryDemo": "Xem trước với dữ liệu demo"
+    },
+    "state": {
+      "loading": "Đang tải các buổi ăn mừng…",
+      "errorTitle": "Không tải được danh sách",
+      "errorBody": "Kiểm tra kết nối mạng rồi thử lại.",
+      "retry": "Thử lại",
+      "emptyTitle": "Chưa có buổi ăn mừng công khai",
+      "emptyBody": "Các phòng HAPPYROOM mặc định là riêng tư và không được liệt kê, và tính năng công khai chưa mở — vì vậy bản đồ để trống thay vì hiển thị phòng giả.",
+      "noMatchTitle": "Không có kết quả phù hợp",
+      "noMatchBody": "Hãy thử khu vực, ngôn ngữ hoặc loại sự kiện khác."
+    },
+    "globe": {
+      "label": "Quả địa cầu tương tác hiển thị các buổi ăn mừng công khai. Danh sách có cùng nội dung.",
+      "loading": "Đang chuẩn bị quả địa cầu…",
+      "fallbackTitle": "Không hiển thị được địa cầu 3D",
+      "fallbackBody": "Trình duyệt này không hỗ trợ địa cầu 3D. Mọi buổi ăn mừng vẫn có trong danh sách.",
+      "reducedMotion": "Đang bật giảm chuyển động nên địa cầu đứng yên.",
+      "hint": "Kéo để xoay · cuộn hoặc chụm để thu phóng",
+      "zoomIn": "Phóng to",
+      "zoomOut": "Thu nhỏ",
+      "reset": "Đặt lại góc nhìn",
+      "geoError": "Không tải được đường bờ biển. Các điểm đánh dấu vẫn hoạt động.",
+      "cluster": "{count} buổi ăn mừng",
+      "more": "+{count} buổi khác"
+    },
+    "detail": {
+      "close": "Đóng",
+      "country": "Quốc gia",
+      "language": "Ngôn ngữ",
+      "type": "Loại",
+      "when": "Thời gian",
+      "participants": "{count} người đã tham gia",
+      "inviteHint": "Phòng vẫn chỉ dành cho người được mời: hãy xin chủ phòng link mời hoặc mã phòng.",
+      "demoHint": "Đây là buổi ăn mừng demo. Hãy tạo phòng của riêng bạn để ăn mừng thật.",
+      "createOwn": "Tạo phòng của bạn",
+      "demoJoin": "Không thể tham gia phòng demo",
+      "clusterTitle": "{count} buổi ăn mừng tại đây",
+      "view": "Xem"
+    },
+    "steps": {
+      "title": "Tạo → Chia sẻ → Ăn mừng",
+      "subtitle": "Từ ý tưởng đến bữa tiệc trong khoảng một phút.",
+      "create": {
+        "title": "Tạo",
+        "body": "Chọn chủ đề, bánh và thời gian. Phòng 3D sẵn sàng sau vài giây — không cần tài khoản."
+      },
+      "share": {
+        "title": "Chia sẻ",
+        "body": "Gửi một link riêng tư hoặc mã phòng qua bất kỳ ứng dụng chat nào. Thêm mã truy cập để riêng tư hơn."
+      },
+      "celebrate": {
+        "title": "Ăn mừng",
+        "body": "Bạn bè tham gia dưới dạng avatar từ mọi điện thoại hay trình duyệt và cùng thổi nến trực tiếp."
+      }
+    },
+    "safety": {
+      "title": "Riêng tư mặc định",
+      "subtitle": "Khám phá không bao giờ đánh đổi quyền riêng tư.",
+      "unlisted": {
+        "title": "Không liệt kê trừ khi chủ phòng cho phép",
+        "body": "Phòng chỉ xuất hiện trên bản đồ sau khi chủ phòng chọn công khai. Có link mời không có nghĩa là phòng công khai."
+      },
+      "location": {
+        "title": "Quốc gia, không phải vị trí",
+        "body": "Địa cầu chỉ hiển thị quốc gia do chủ phòng chọn — không bao giờ là vị trí, địa chỉ hay tọa độ chính xác của bạn."
+      },
+      "codes": {
+        "title": "Lời mời luôn bí mật",
+        "body": "Link mời, mã truy cập và tên người không bao giờ xuất hiện trên bản đồ công khai."
+      }
+    },
+    "finalCta": {
+      "title": "Đưa buổi ăn mừng của bạn lên bản đồ",
+      "subtitle": "Một phòng 3D ấm cúng, một đường link, mọi người cùng nhau."
+    },
+    "credit": "Dữ liệu bản đồ: Natural Earth (phạm vi công cộng)"
   }
 }
