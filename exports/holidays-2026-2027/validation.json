@@ -1,0 +1,17 @@
+{
+  "countries": 195,
+  "continents": 6,
+  "years": [
+    2026,
+    2027
+  ],
+  "holiday_occurrences": 5670,
+  "supplemental_festivals": 80,
+  "missing_specific_meaning": 662,
+  "estimated_dates": 677,
+  "countries_without_public_dates": [
+    "UA"
+  ],
+  "xlsx_files": 202,
+  "errors": []
+}
